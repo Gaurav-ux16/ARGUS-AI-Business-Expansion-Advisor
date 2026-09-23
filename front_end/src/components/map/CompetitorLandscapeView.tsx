@@ -29,21 +29,21 @@ export const CompetitorLandscapeView: React.FC = () => {
         c.industry.toLowerCase().includes(selectedIndustry.toLowerCase())
       );
 
-  // Initialize Leaflet Map (Dark Navy Style: CartoDB Dark Matter)
+  // Initialize Leaflet Map (OpenStreetMap Tiles)
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
     if (!mapInstanceRef.current) {
       const map = L.map(mapContainerRef.current, {
         zoomControl: true,
-        attributionControl: false,
+        attributionControl: true,
       }).setView([landscape.centerLat, landscape.centerLng], landscape.defaultZoom);
 
       L.tileLayer(
-        'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         {
           maxZoom: 19,
-          subdomains: 'abcd',
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         }
       ).addTo(map);
 
@@ -279,6 +279,7 @@ export const CompetitorLandscapeView: React.FC = () => {
               padding: '10px 14px',
               display: 'flex',
               alignItems: 'center',
+              flexWrap: 'wrap',
               gap: '14px',
               fontSize: '11px',
               fontWeight: 600,
@@ -298,6 +299,12 @@ export const CompetitorLandscapeView: React.FC = () => {
               <div style={{ width: '12px', height: '12px', borderRadius: '50%', border: '1.5px dashed #FFD482', backgroundColor: 'rgba(255, 212, 130, 0.25)' }}></div>
               <span style={{ color: '#FFFFFF' }}>Business Cluster</span>
             </div>
+
+            <div style={{ height: '14px', width: '1px', backgroundColor: 'rgba(173, 208, 255, 0.3)' }} />
+
+            <span style={{ color: '#FFD482', fontSize: '10.5px', fontStyle: 'italic', fontWeight: 500 }}>
+              Prototype competitor data
+            </span>
           </div>
 
           {/* Interactive Leaflet Map Div */}
