@@ -1,0 +1,779 @@
+SINGAPORE BUSINESS EXPANSION REGULATORY KNOWLEDGE BASE
+===========================================================
+
+PURPOSE
+-------
+This is a curated knowledge base for an AI Business Expansion Regulatory
+Advisor helping startups evaluate expansion into Singapore.
+
+IMPORTANT:
+- This is informational and is NOT legal, tax, immigration, accounting,
+  or professional advice.
+- Regulations, fees, salary thresholds, quotas, rebates and procedures can
+  change. Always verify important decisions against the latest official
+  government source.
+- Current information should be treated as a snapshot checked in August 2026.
+- Each section preserves an official source URL for traceability.
+
+===========================================================
+1. COUNTRY AND FOREIGN BUSINESS ENTRY
+===========================================================
+
+Singapore offers several routes for foreign businesses to establish a
+presence. A foreign business may consider:
+1. Representative office
+2. Singapore subsidiary/local company
+3. Foreign company branch
+4. Re-domiciliation
+
+Foreign businesses must engage a Corporate Service Provider (CSP) to register
+their business in Singapore.
+
+Foreign founders must also consider local residency requirements. If a
+foreign founder intends to move to Singapore to operate the business, an
+appropriate work pass is required.
+
+OFFICIAL SOURCES:
+ACRA - Setting up a foreign business:
+https://www.acra.gov.sg/register/foreign-business/
+
+ACRA - Ways to set up foreign businesses:
+https://www.acra.gov.sg/register/foreign-business/ways-to-set-up/
+
+===========================================================
+2. BUSINESS REGISTRATION
+===========================================================
+
+A business generally needs to be registered when it carries out an activity
+for profit on a regular basis, unless an exemption applies. Registration is
+also generally required when a business operates under a name other than the
+owner's full legal name.
+
+ACRA's business registration process is organized into five broad stages:
+1. Understand requirements and eligibility.
+2. Choose a business structure.
+3. Choose and reserve a business name.
+4. Register the business structure through Bizfile.
+5. Complete post-registration requirements.
+
+A person generally must be at least 18 years old to register a business.
+
+OFFICIAL SOURCES:
+https://www.acra.gov.sg/register/business/
+https://www.acra.gov.sg/register/business/requirements-eligibility/
+
+===========================================================
+3. FOREIGNER REQUIREMENTS
+===========================================================
+
+Foreigners must engage a Corporate Service Provider (CSP) to reserve a name
+and register a business structure.
+
+Every business must have at least one local resident in Singapore. The exact
+role of the local resident depends on the business structure.
+
+ACRA identifies eligible local-resident categories including:
+- Singapore citizens
+- Singapore permanent residents
+- Certain eligible pass holders, including Employment Pass holders,
+  Personalised Employment Pass holders and Overseas Networks & Expertise
+  Pass holders.
+
+Foreign Identification Number (FIN) holders should check with their pass
+issuer before registering a business name or accepting a role.
+
+If a foreign founder wants to move to Singapore to run the business, the
+founder needs an appropriate work pass.
+
+For entrepreneurs with venture-backed or innovative technology companies,
+EntrePass may be a possible route subject to eligibility requirements.
+
+OFFICIAL SOURCE:
+https://www.acra.gov.sg/register/business/requirements-eligibility/
+
+===========================================================
+4. WAYS TO SET UP A FOREIGN BUSINESS
+===========================================================
+
+4.1 REPRESENTATIVE OFFICE
+-------------------------
+A representative office is intended for market research before committing
+to a Singapore setup.
+
+It is temporary, is not a separate legal entity, and the parent company
+remains responsible. It cannot earn income.
+
+4.2 SUBSIDIARY / LOCAL COMPANY
+------------------------------
+A subsidiary is a separate Singapore company owned by the foreign parent.
+
+It has separate legal status and liability is generally limited to the
+subsidiary's assets. It can conduct commercial operations, earn income and
+is subject to corporate taxation.
+
+4.3 FOREIGN COMPANY BRANCH
+--------------------------
+A branch is a direct extension of the foreign parent company.
+
+It is not a separate legal entity. The parent company remains responsible
+for the branch.
+
+A foreign company branch:
+- can earn income;
+- requires a locally resident authorised representative;
+- has statutory and disclosure requirements;
+- has annual filing obligations;
+- requires business-name reservation before registration;
+- requires a Corporate Service Provider for registration.
+
+4.4 RE-DOMICILIATION
+--------------------
+Re-domiciliation allows an eligible foreign company to transfer its legal
+registration to Singapore. The foreign company becomes a Singapore company
+and must comply with Singapore requirements after re-domiciliation.
+
+OFFICIAL SOURCE:
+https://www.acra.gov.sg/register/foreign-business/ways-to-set-up/
+
+===========================================================
+5. BUSINESS STRUCTURES
+===========================================================
+
+Singapore provides several business structures:
+- Sole proprietorship
+- Partnership
+- Limited Partnership (LP)
+- Limited Liability Partnership (LLP)
+- Company
+
+5.1 SOLE PROPRIETORSHIP
+-----------------------
+This is the simplest business form with one owner.
+
+It is not a separate legal entity. The owner has unlimited liability for
+business debts and losses.
+
+ACRA currently lists a one-year registration fee of S$115, consisting of a
+S$15 name application fee and S$100 registration fee.
+
+5.2 PARTNERSHIP
+---------------
+A partnership is operated by at least two partners.
+
+It is not a separate legal entity and partners generally have unlimited
+personal liability for partnership debts.
+
+5.3 LIMITED PARTNERSHIP
+-----------------------
+An LP has at least one general partner and at least one limited partner.
+
+The general partner has unlimited liability and manages the LP. A limited
+partner's liability is generally limited to the agreed contribution, but a
+limited partner should not manage the LP or may be treated as a general
+partner.
+
+If all general partners are foreigners, a local manager meeting the
+requirements must be appointed.
+
+5.4 LIMITED LIABILITY PARTNERSHIP
+---------------------------------
+An LLP is a separate legal entity from its partners.
+
+It combines partnership flexibility with limited liability protection.
+
+An LLP can own property, enter contracts, sue and be sued in its own name.
+
+An LLP must have at least one manager meeting local residency requirements.
+
+Key ongoing requirements include maintaining records and registers and
+filing annual declarations.
+
+5.5 PRIVATE LIMITED COMPANY
+---------------------------
+A company is a separate legal entity.
+
+Shareholders generally have limited liability. A company must have at least
+one shareholder and at least one director.
+
+Ongoing requirements can include:
+- company secretary appointment where required;
+- auditor appointment unless exempt;
+- company registers;
+- annual general meeting requirements;
+- annual returns.
+
+ACRA currently lists S$315 as the basic name application plus incorporation
+fee for a company: S$15 name application + S$300 incorporation.
+
+ACRA identifies private company forms such as Pte Ltd as common structures
+for startups and small businesses.
+
+OFFICIAL SOURCE:
+https://www.acra.gov.sg/register/business/choosing-business-structure/
+
+===========================================================
+6. COMPANY CONSTITUTION
+===========================================================
+
+A company constitution sets the rules for operating a company or subsidiary.
+
+It defines rights and responsibilities of directors, shareholders and company
+secretaries.
+
+It may include:
+- company name;
+- business activities;
+- operating rules;
+- shareholder liability;
+- share capital;
+- issued shares;
+- registered office address.
+
+The registered office is where legal notices can be sent and company records
+and registers are maintained.
+
+ACRA provides a model constitution option.
+
+OFFICIAL SOURCE:
+https://www.acra.gov.sg/register/business/registering-different-business-structures/local-company/company-constitution/
+
+===========================================================
+7. FOREIGN COMPANY BRANCH REGISTRATION
+===========================================================
+
+A foreign company can register a branch in Singapore.
+
+Important requirements include:
+- locally resident authorised representative;
+- statutory and disclosure compliance;
+- annual filing requirements;
+- approved business name;
+- engagement of a CSP;
+- foreign company incorporation/registration information;
+- foreign registration number;
+- position-holder information;
+- controller information;
+- required supporting documents.
+
+The branch registration is performed through Bizfile.
+
+OFFICIAL SOURCE:
+https://www.acra.gov.sg/register/foreign-business/foreign-company-branch/
+
+===========================================================
+8. POST-REGISTRATION AND ANNUAL COMPLIANCE
+===========================================================
+
+Foreign companies have ongoing compliance requirements after registration.
+
+ACRA provides a post-registration checklist covering immediate next steps,
+requirements before operations and optional business services.
+
+Foreign companies must file financial statements for both their head office
+and Singapore branch operations each year, subject to applicable rules and
+exemptions.
+
+OFFICIAL SOURCES:
+https://www.acra.gov.sg/register/business/after-registering/foreign-company/
+
+https://www.acra.gov.sg/manage/companies/legal-requirements-common-offences/annual-filing-for-foreign-companies/
+
+===========================================================
+9. REGISTER OF REGISTRABLE CONTROLLERS
+===========================================================
+
+Singapore maintains a Central Register of Registrable Controllers (Central
+RORC).
+
+Unless exempt, companies including foreign companies and LLPs must file
+information about registrable controllers with ACRA.
+
+The register concerns people who beneficially own or control the entity.
+
+OFFICIAL SOURCE:
+https://www.acra.gov.sg/manage/companies/legal-requirements-common-offences/maintaining-local-companys-information-registers/rorc/central-rorc/
+
+===========================================================
+10. CORPORATE TAXATION
+===========================================================
+
+Singapore's Corporate Income Tax is administered by IRAS.
+
+The current corporate income tax rate is 17% of chargeable income.
+
+The 17% rate applies to both local and foreign companies.
+
+Corporate Income Tax is assessed on a preceding-year basis.
+
+OFFICIAL SOURCES:
+https://www.iras.gov.sg/quick-links/tax-rates/corporate-income-tax-rates
+
+https://www.iras.gov.sg/taxes/corporate-income-tax/basics-of-corporate-income-tax/basic-guide-to-corporate-income-tax-for-companies/
+
+10.1 NEW COMPANY TAX EXEMPTION
+------------------------------
+Qualifying new companies can receive tax exemptions during their first
+three consecutive Years of Assessment, subject to the applicable conditions.
+
+For the current relevant scheme, IRAS lists:
+- 75% exemption on the first S$100,000 of normal chargeable income;
+- 50% exemption on the next S$100,000;
+- maximum exemption of S$125,000 per YA under that scheme.
+
+Eligibility and the applicable Year of Assessment must be checked before
+claiming the exemption.
+
+10.2 YA 2026 TAX REBATE
+-----------------------
+IRAS states that for YA 2026 a 40% Corporate Income Tax rebate of corporate
+tax payable is granted to taxpaying companies, whether tax resident or not,
+under the published Budget 2026 rules.
+
+This is a time-sensitive rebate and should NOT be treated as a permanent
+tax rate or permanent exemption.
+
+OFFICIAL SOURCE:
+https://www.iras.gov.sg/quick-links/tax-rates/corporate-income-tax-rates
+
+===========================================================
+11. FOREIGN WORKERS AND LABOR
+===========================================================
+
+Startups expanding to Singapore may need work passes when hiring foreign
+employees.
+
+Important passes include:
+- Employment Pass (EP)
+- S Pass
+- Work Permit
+- Personalised Employment Pass (PEP)
+- Other applicable work passes
+
+The appropriate pass depends on the worker's role, salary, qualifications,
+sector and employer circumstances.
+
+===========================================================
+12. EMPLOYMENT PASS
+===========================================================
+
+The Employment Pass is intended for foreign professionals, managers,
+executives and technicians who meet the eligibility requirements.
+
+The eligibility framework has two main stages.
+
+STAGE 1:
+The candidate must earn at least the applicable EP qualifying salary.
+
+STAGE 2:
+Unless exempted, the candidate must pass the points-based Complementarity
+Assessment Framework (COMPASS).
+
+MOM currently states that the minimum qualifying salary for sectors other
+than financial services starts at S$5,600 and increases progressively with
+age, up to S$10,700 at age 45 and above.
+
+For financial services, the current minimum starts at S$6,200 and increases
+progressively with age.
+
+MOM has published future salary thresholds beginning 1 January 2027.
+Therefore, an AI system must check the current MOM source before providing
+a salary threshold.
+
+Employers must also meet Fair Consideration Framework job-advertising
+requirements before submitting new EP applications, unless an applicable
+exception or exemption applies.
+
+OFFICIAL SOURCES:
+https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility
+https://www.mom.gov.sg/passes-and-permits/employment-pass
+https://www.mom.gov.sg/passes-and-permits/employment-pass/key-facts
+
+===========================================================
+13. EMPLOYMENT PASS DOCUMENTS
+===========================================================
+
+MOM identifies documents that may be required for EP applications.
+
+Examples include:
+- candidate passport/personal particulars page;
+- company's latest ACRA business profile or instant information;
+- qualification verification where applicable;
+- additional documents for certain professions or circumstances.
+
+The exact document list depends on the application.
+
+OFFICIAL SOURCE:
+https://www.mom.gov.sg/passes-and-permits/employment-pass/documents-required
+
+===========================================================
+14. S PASS
+===========================================================
+
+The S Pass is intended for eligible foreign skilled workers, including
+Associate Professionals and Technicians.
+
+MOM currently states that the minimum qualifying salary starts at S$3,300
+and increases progressively with age, up to S$4,800 for candidates in their
+mid-40s. Financial services candidates have higher requirements.
+
+MOM has announced that the minimum will increase from S$3,300 to S$3,600
+for new applications from 1 January 2027 and renewals expiring from
+1 January 2028.
+
+S Pass hiring is subject to:
+- sector-specific quota;
+- dependency ratio ceiling;
+- monthly foreign-worker levy;
+- applicable employment conditions.
+
+MOM states that since 1 September 2025 the S Pass levy rate has been
+harmonised to S$650 across sectors and levy tiers.
+
+OFFICIAL SOURCES:
+https://www.mom.gov.sg/passes-and-permits/s-pass/key-facts
+https://www.mom.gov.sg/passes-and-permits/s-pass/quota-and-levy/levy-and-quota-requirements
+
+===========================================================
+15. S PASS QUOTA
+===========================================================
+
+The number of foreign workers an employer can hire is restricted by
+sector-specific quotas.
+
+MOM currently lists dependency ratio ceilings including:
+- Construction: 83.3%
+- Process: 83.3%
+- Marine shipyard: 75%
+- Manufacturing: 60%
+- Services: 35%
+
+The actual number of S Pass holders is also affected by applicable
+sub-quotas and workforce composition.
+
+This information is highly relevant to a startup that wants to hire many
+foreign skilled workers.
+
+Quota and levy information should be treated as time-sensitive.
+
+OFFICIAL SOURCE:
+https://www.mom.gov.sg/passes-and-permits/s-pass/quota-and-levy/levy-and-quota-requirements
+
+===========================================================
+16. PERSONALISED EMPLOYMENT PASS
+===========================================================
+
+The Personalised Employment Pass is intended for eligible high-earning
+foreign professionals and provides greater job flexibility.
+
+MOM currently states a minimum fixed monthly salary of S$22,500 for PEP
+eligibility.
+
+The PEP can be issued for up to three years and is not renewable.
+
+PEP holders have job flexibility but professional registration requirements
+for regulated professions still apply.
+
+OFFICIAL SOURCES:
+https://www.mom.gov.sg/passes-and-permits/personalised-employment-pass/eligibility
+https://www.mom.gov.sg/passes-and-permits/personalised-employment-pass/key-facts
+
+===========================================================
+17. DATA PRIVACY - PDPA
+===========================================================
+
+Singapore's Personal Data Protection Act (PDPA) establishes a framework
+for protecting personal data.
+
+The PDPA covers personal data stored in electronic and non-electronic forms,
+subject to its scope and exclusions.
+
+Organizations that collect, use or disclose personal data need to comply
+with applicable data protection obligations.
+
+KEY OBLIGATIONS:
+
+1. ACCOUNTABILITY
+Organizations should take measures to meet PDPA obligations, including
+making information about data protection policies, practices and complaints
+processes available where required and designating a Data Protection Officer
+(DPO) with publicly available business contact information.
+
+2. NOTIFICATION
+Organizations should notify individuals of purposes for which personal data
+is intended to be collected, used or disclosed.
+
+3. CONSENT
+Organizations generally collect, use or disclose personal data for purposes
+for which an individual has given consent, subject to applicable exceptions.
+
+4. PURPOSE LIMITATION
+Personal data should only be collected, used or disclosed for appropriate
+purposes and in accordance with applicable requirements.
+
+5. ACCURACY
+Reasonable effort should be made to ensure personal data is accurate and
+complete, especially where it is likely to affect an individual or be
+disclosed to another organization.
+
+6. PROTECTION
+Organizations must make reasonable security arrangements to protect
+personal data from unauthorized access, collection, use, disclosure and
+similar risks.
+
+Other PDPA obligations may apply depending on the organization's activities,
+data processing, transfers and circumstances.
+
+OFFICIAL SOURCES:
+https://www.pdpc.gov.sg/overview-of-pdpa/the-legislation/personal-data-protection-act
+https://www.pdpc.gov.sg/overview-of-pdpa/the-legislation/personal-data-protection-act/data-protection-obligations
+
+===========================================================
+18. LICENSES AND SECTOR-SPECIFIC COMPLIANCE
+===========================================================
+
+Company registration does not automatically authorize every type of
+business activity.
+
+Depending on the industry, a company may require additional licences,
+approvals, registrations or professional permissions.
+
+Potentially regulated areas can include financial services, healthcare,
+food, education, transport, telecommunications and regulated professions.
+
+The AI advisor should therefore ask for:
+- industry;
+- exact business activity;
+- products/services;
+- whether the company handles regulated data;
+- whether the company employs foreign workers.
+
+The system should then identify relevant licensing or regulatory requirements
+from the appropriate Singapore authority.
+
+Do not state that company registration alone gives permission to operate a
+regulated activity.
+
+===========================================================
+19. ONGOING COMPLIANCE CHECKLIST
+===========================================================
+
+A startup considering Singapore should check:
+
+BUSINESS ENTRY
+- Which legal structure is appropriate?
+- Does a foreign business need a CSP?
+- Is a local resident required?
+- Is a branch or subsidiary better suited?
+- Is re-domiciliation possible?
+
+TAX
+- Corporate tax rate
+- Tax exemptions
+- Applicable rebates
+- Tax residency
+- Filing requirements
+- Other taxes depending on business activity
+
+HIRING
+- Number of employees required
+- Local versus foreign employees
+- Employment Pass eligibility
+- S Pass eligibility
+- Salary thresholds
+- Foreign-worker quota
+- Levy requirements
+- Fair hiring requirements
+
+DATA
+- Whether personal data is collected
+- PDPA applicability
+- DPO requirement
+- Consent and notification
+- Data security
+- Other applicable obligations
+
+CORPORATE COMPLIANCE
+- Annual returns
+- Financial statements
+- Company registers
+- RORC
+- Company secretary
+- Auditor requirements where applicable
+
+SECTOR
+- Licences
+- Professional registrations
+- Sector-specific approvals
+
+===========================================================
+20. QUESTIONS THE RAG SHOULD ANSWER
+===========================================================
+
+1. Can a foreign company expand into Singapore?
+2. What options does a foreign company have?
+3. What is the difference between a branch and subsidiary?
+4. Does a foreign founder need a CSP?
+5. Does a foreign founder need a local resident?
+6. Can a foreign founder move to Singapore to operate the business?
+7. What business structures are available?
+8. How much does basic company incorporation cost?
+9. What is Singapore's corporate tax rate?
+10. Are new companies eligible for tax exemptions?
+11. What is the Employment Pass?
+12. What is the current EP salary requirement?
+13. What is COMPASS?
+14. What is the S Pass?
+15. What is the S Pass salary requirement?
+16. Is there a quota for foreign workers?
+17. What is the S Pass levy?
+18. What documents are needed for an EP application?
+19. What are the main PDPA obligations?
+20. Does a company need a DPO?
+21. What ongoing filings are required?
+22. What financial statements must a foreign company file?
+23. What is the Central RORC?
+24. Does registration automatically allow regulated business activity?
+25. What should a startup evaluate before choosing Singapore?
+
+===========================================================
+21. FEATURES THAT CAN BE EXTRACTED FOR THE ML MODEL
+===========================================================
+
+The Singapore document can later provide features for the Expansion Readiness
+Score.
+
+BUSINESS SETUP FEATURES
+- Available legal structures
+- Foreign-company entry options
+- Basic incorporation fee
+- CSP requirement
+- Local resident requirement
+- Ongoing filing requirements
+
+TAX FEATURES
+- Corporate tax rate: 17%
+- New-company tax exemption availability
+- Time-sensitive tax rebates
+- Other applicable taxes to be added from official sources
+
+LABOR FEATURES
+- EP salary threshold
+- S Pass salary threshold
+- S Pass quota
+- S Pass levy
+- Foreign-worker restrictions
+
+DATA FEATURES
+- PDPA applicability
+- DPO requirement
+- Consent obligations
+- Notification obligations
+- Protection/security obligations
+
+COMPLIANCE FEATURES
+- Annual filings
+- Financial statements
+- RORC
+- Company secretary/auditor requirements
+
+These values should not automatically become a simplistic "Singapore is good"
+score. The ML/scoring system should compare them against the startup's actual
+requirements.
+
+Example:
+A startup that needs 20 foreign skilled employees may care much more about
+foreign-worker rules than a startup that only needs two local employees.
+
+A startup handling large amounts of personal data may assign greater weight
+to data-protection compliance.
+
+A very small startup may assign greater weight to incorporation and operating
+costs.
+
+===========================================================
+22. RECOMMENDED RAG BEHAVIOUR
+===========================================================
+
+The RAG system should:
+
+1. Prefer official Singapore government information.
+2. Retrieve the relevant section before generating an answer.
+3. Never invent a regulation, fee, threshold, quota or deadline.
+4. Mention when information is time-sensitive.
+5. Provide source document/section and source URL.
+6. Say when the knowledge base does not contain enough information.
+7. Clearly distinguish a legal requirement from an AI recommendation.
+8. Avoid presenting itself as a lawyer, tax adviser or immigration adviser.
+9. For high-impact decisions, recommend verification with the relevant
+   government authority.
+10. When comparing Singapore with another country, retrieve equivalent
+    official information for the other country instead of assuming the
+    rules are comparable.
+
+===========================================================
+23. OFFICIAL SOURCE INDEX
+===========================================================
+
+ACRA - Registering a business
+https://www.acra.gov.sg/register/business/
+
+ACRA - Requirements and eligibility
+https://www.acra.gov.sg/register/business/requirements-eligibility/
+
+ACRA - Setting up a foreign business
+https://www.acra.gov.sg/register/foreign-business/
+
+ACRA - Ways to set up foreign businesses
+https://www.acra.gov.sg/register/foreign-business/ways-to-set-up/
+
+ACRA - Foreign company branch
+https://www.acra.gov.sg/register/foreign-business/foreign-company-branch/
+
+ACRA - Choosing business structure
+https://www.acra.gov.sg/register/business/choosing-business-structure/
+
+ACRA - Company constitution
+https://www.acra.gov.sg/register/business/registering-different-business-structures/local-company/company-constitution/
+
+ACRA - Post-registration guide
+https://www.acra.gov.sg/register/business/after-registering/foreign-company/
+
+ACRA - Annual filing for foreign companies
+https://www.acra.gov.sg/manage/companies/legal-requirements-common-offences/annual-filing-for-foreign-companies/
+
+ACRA - Central RORC
+https://www.acra.gov.sg/manage/companies/legal-requirements-common-offences/maintaining-local-companys-information-registers/rorc/central-rorc/
+
+IRAS - Corporate Income Tax Rates
+https://www.iras.gov.sg/quick-links/tax-rates/corporate-income-tax-rates
+
+IRAS - Basic Corporate Income Tax Guide
+https://www.iras.gov.sg/taxes/corporate-income-tax/basics-of-corporate-income-tax/basic-guide-to-corporate-income-tax-for-companies/
+
+MOM - Employment Pass
+https://www.mom.gov.sg/passes-and-permits/employment-pass
+
+MOM - Employment Pass Eligibility
+https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility
+
+MOM - Employment Pass Documents
+https://www.mom.gov.sg/passes-and-permits/employment-pass/documents-required
+
+MOM - S Pass
+https://www.mom.gov.sg/passes-and-permits/s-pass/key-facts
+
+MOM - S Pass Quota and Levy
+https://www.mom.gov.sg/passes-and-permits/s-pass/quota-and-levy/levy-and-quota-requirements
+
+MOM - Personalised Employment Pass
+https://www.mom.gov.sg/passes-and-permits/personalised-employment-pass/key-facts
+
+PDPC - PDPA
+https://www.pdpc.gov.sg/overview-of-pdpa/the-legislation/personal-data-protection-act
+
+PDPC - Data Protection Obligations
+https://www.pdpc.gov.sg/overview-of-pdpa/the-legislation/personal-data-protection-act/data-protection-obligations
+
+===========================================================
+END OF SINGAPORE KNOWLEDGE BASE
+===========================================================

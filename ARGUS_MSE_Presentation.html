@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARGUS: MSE Research Project Presentation | EDI Capstone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-blue: #003E8F;
+      --dark-navy: #14243A;
+      --dark-brown: #4F3B15;
+      --golden-brown: #8F5E01;
+      --warm-gold: #FFD482;
+      --light-blue: #ADD0FF;
+      --bg-slate: #0C1523;
+      --surface-card: #131E30;
+      --surface-card-subtle: #19273E;
+      --surface-border: #1F3352;
+      --text-main: #FFFFFF;
+      --text-muted: #9EAFCE;
+      --text-dim: #6B7E9F;
+      --accent-green: #10B981;
+      --accent-amber: #F59E0B;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-slate);
+      color: var(--text-main);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+    }
+
+    /* Top presentation navigation bar */
+    .top-bar {
+      height: 52px;
+      background-color: rgba(20, 36, 58, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--surface-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 100;
+      position: relative;
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, var(--primary-blue), var(--dark-navy));
+      border: 1px solid var(--warm-gold);
+      color: var(--warm-gold);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .brand-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.3px;
+    }
+
+    .academic-tag {
+      background-color: rgba(143, 94, 1, 0.25);
+      border: 1px solid var(--golden-brown);
+      color: var(--warm-gold);
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .controls-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      background-color: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-blue);
+      color: #FFFFFF;
+      border-color: var(--light-blue);
+    }
+
+    .btn.active {
+      background-color: var(--golden-brown);
+      color: #FFFFFF;
+      border-color: var(--warm-gold);
+    }
+
+    .btn-nav {
+      padding: 6px 12px;
+      font-weight: 600;
+    }
+
+    .slide-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--warm-gold);
+      padding: 0 8px;
+    }
+
+    /* Main Slide Stage */
+    .deck-container {
+      position: relative;
+      width: 100vw;
+      height: calc(100vh - 52px - 36px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+    }
+
+    .slide {
+      position: absolute;
+      width: min(1500px, 96vw);
+      height: min(840px, 94%);
+      background: linear-gradient(180deg, var(--surface-card) 0%, rgba(15, 25, 42, 0.98) 100%);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+      padding: 32px 42px;
+      display: none;
+      flex-direction: column;
+      overflow-y: auto;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Slide Header */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid rgba(173, 208, 255, 0.15);
+      padding-bottom: 14px;
+      margin-bottom: 22px;
+    }
+
+    .slide-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--warm-gold);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-section-label::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: var(--warm-gold);
+      border-radius: 50%;
+    }
+
+    .slide-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.3px;
+    }
+
+    .slide-meta-pill {
+      background-color: rgba(0, 62, 143, 0.4);
+      border: 1px solid rgba(173, 208, 255, 0.3);
+      color: var(--light-blue);
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* Content Cards & Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      background-color: var(--surface-card-subtle);
+      border: 1px solid var(--surface-border);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+
+    .card-highlight {
+      border-left: 4px solid var(--warm-gold);
+    }
+
+    .card-blue {
+      border-left: 4px solid var(--primary-blue);
+    }
+
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title.gold { color: var(--warm-gold); }
+    .card-title.blue { color: var(--light-blue); }
+
+    p, li {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    strong {
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 8px;
+    }
+
+    ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--warm-gold);
+      font-size: 12px;
+      top: 1px;
+    }
+
+    /* Academic Tables */
+    .academic-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 8px;
+      background-color: rgba(15, 25, 42, 0.6);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--surface-border);
+    }
+
+    .academic-table th {
+      background-color: var(--primary-blue);
+      color: #FFFFFF;
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+      font-size: 11.5px;
+      letter-spacing: 0.4px;
+      border-bottom: 2px solid var(--golden-brown);
+    }
+
+    .academic-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid rgba(31, 51, 82, 0.7);
+      color: var(--text-muted);
+      vertical-align: top;
+      line-height: 1.45;
+    }
+
+    .academic-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .academic-table tr:hover td {
+      background-color: rgba(0, 62, 143, 0.15);
+    }
+
+    .badge-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 2px 6px;
+      background-color: rgba(255, 212, 130, 0.12);
+      border: 1px solid rgba(255, 212, 130, 0.3);
+      color: var(--warm-gold);
+      border-radius: 4px;
+    }
+
+    /* Flowcharts & Diagrams */
+    .flow-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: space-between;
+      margin: 14px 0;
+    }
+
+    .flow-step {
+      flex: 1;
+      background: linear-gradient(180deg, var(--surface-card-subtle) 0%, rgba(20, 36, 58, 0.8) 100%);
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      text-align: center;
+      position: relative;
+    }
+
+    .flow-step.active-step {
+      border-color: var(--warm-gold);
+      box-shadow: 0 0 12px rgba(255, 212, 130, 0.15);
+    }
+
+    .flow-step-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--warm-gold);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 2px;
+    }
+
+    .flow-step-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+
+    .flow-step-desc {
+      font-size: 10.5px;
+      color: var(--text-dim);
+      margin-top: 3px;
+    }
+
+    .flow-arrow {
+      color: var(--warm-gold);
+      font-size: 16px;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    /* Bottom Status Bar */
+    .bottom-bar {
+      height: 36px;
+      background-color: rgba(12, 21, 35, 0.98);
+      border-top: 1px solid var(--surface-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      font-size: 11px;
+      color: var(--text-dim);
+      z-index: 100;
+    }
+
+    .kbd-shortcut {
+      display: inline-block;
+      padding: 1px 6px;
+      border: 1px solid var(--surface-border);
+      background-color: var(--surface-card);
+      border-radius: 3px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+      margin: 0 2px;
+      font-size: 10px;
+    }
+
+    /* Speaker Notes Drawer */
+    .speaker-drawer {
+      position: fixed;
+      bottom: 36px;
+      left: 0;
+      right: 0;
+      background: rgba(15, 25, 42, 0.98);
+      backdrop-filter: blur(16px);
+      border-top: 2px solid var(--golden-brown);
+      max-height: 230px;
+      overflow-y: auto;
+      padding: 18px 32px;
+      z-index: 200;
+      display: none;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .speaker-drawer.open {
+      display: block;
+    }
+
+    .speaker-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .speaker-drawer-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--warm-gold);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .speaker-text {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #E2E8F0;
+      font-style: normal;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 12px 16px;
+      border-radius: 6px;
+      border-left: 3px solid var(--primary-blue);
+    }
+
+    /* Title Slide Specific Styling */
+    .title-slide-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      text-align: center;
+      padding: 24px 20px;
+    }
+
+    .title-banner {
+      display: inline-block;
+      margin: 0 auto;
+      background: rgba(0, 62, 143, 0.3);
+      border: 1px solid var(--light-blue);
+      color: var(--light-blue);
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 30px;
+    }
+
+    .main-project-heading {
+      font-family: 'Outfit', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #FFFFFF;
+      margin-top: 14px;
+      line-height: 1.15;
+    }
+
+    .main-project-heading span {
+      background: linear-gradient(90deg, #ADD0FF 0%, #FFD482 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .sub-project-heading {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      font-weight: 400;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+
+    .meta-cards-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+      text-align: left;
+    }
+
+    .meta-box {
+      background: rgba(20, 36, 58, 0.7);
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .meta-box-label {
+      font-size: 11px;
+      color: var(--warm-gold);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+    }
+
+    .meta-box-val {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #FFFFFF;
+    }
+
+    /* Print styling for PDF export */
+    @media print {
+      body {
+        overflow: visible !important;
+        height: auto !important;
+        background: #FFFFFF !important;
+        color: #000000 !important;
+      }
+      .top-bar, .bottom-bar, .speaker-drawer {
+        display: none !important;
+      }
+      .deck-container {
+        height: auto !important;
+        padding: 0 !important;
+        display: block !important;
+      }
+      .slide {
+        display: flex !important;
+        opacity: 1 !important;
+        position: relative !important;
+        width: 100% !important;
+        height: 100vh !important;
+        page-break-after: always !important;
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 24px !important;
+      }
+      .slide-title, .card-title, strong {
+        color: #003E8F !important;
+      }
+      .card {
+        background: #F8FAFC !important;
+        border: 1px solid #CBD5E1 !important;
+      }
+      p, li, td {
+        color: #334155 !important;
+      }
+      .academic-table th {
+        background: #003E8F !important;
+        color: #FFFFFF !important;
+      }
+      .academic-table td {
+        border-color: #E2E8F0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation & Controls Bar -->
+  <header class="top-bar">
+    <div class="brand-section">
+      <div class="brand-badge">ARGUS</div>
+      <div class="brand-title">AI-Powered Business Expansion Decision-Support Platform</div>
+      <div class="academic-tag">MSE DEFENSE 2026</div>
+    </div>
+    <div class="controls-section">
+      <button class="btn btn-nav" id="prevBtn" title="Previous Slide (← / Backspace)">◀ Prev</button>
+      <span class="slide-counter" id="slideCounter">01 / 15</span>
+      <button class="btn btn-nav" id="nextBtn" title="Next Slide (→ / Space)">Next ▶</button>
+      <button class="btn" id="notesToggleBtn" title="Toggle Speaker Notes (N)">🎙 Speaker Notes</button>
+      <button class="btn" id="fullScreenBtn" title="Fullscreen (F)">⛶ Fullscreen</button>
+      <button class="btn" onclick="window.print()" title="Print or Save PDF">🖨 Print PDF</button>
+    </div>
+  </header>
+
+  <!-- Main Slide Viewing Area -->
+  <main class="deck-container">
+
+    <!-- ========================================== -->
+    <!-- SLIDE 1: TITLE SLIDE                       -->
+    <!-- ========================================== -->
+    <section class="slide active" id="slide-1" data-index="1">
+      <div class="title-slide-content">
+        <div>
+          <div class="title-banner">ENGINEERING DESIGN AND INNOVATION (EDI) • CAPSTONE RESEARCH</div>
+          <h1 class="main-project-heading">
+            <span>ARGUS</span>: AI-Powered Business Expansion<br>Decision-Support Platform for Startups
+          </h1>
+          <p class="sub-project-heading">
+            An explainable decision-support framework synthesizing multi-attribute macroeconomic scoring, parameterized operational cost modeling, and grounded regulatory intelligence via Retrieval-Augmented Generation (RAG).
+          </p>
+        </div>
+
+        <div class="meta-cards-row">
+          <div class="meta-box">
+            <div class="meta-box-label">Academic Program</div>
+            <div class="meta-box-val">Bachelor of Technology</div>
+            <div class="meta-box-val" style="font-size:12px; color:var(--text-muted); margin-top:2px;">Computer Science & Engineering</div>
+          </div>
+          <div class="meta-box">
+            <div class="meta-box-label">Course Details</div>
+            <div class="meta-box-val">EDI Capstone / Sem VI</div>
+            <div class="meta-box-val" style="font-size:12px; color:var(--text-muted); margin-top:2px;">Mid-Semester Examination (MSE)</div>
+          </div>
+          <div class="meta-box">
+            <div class="meta-box-label">Research Domains</div>
+            <div class="meta-box-val">Decision Support Systems (DSS)</div>
+            <div class="meta-box-val" style="font-size:12px; color:var(--text-muted); margin-top:2px;">Regulatory NLP & Vector RAG</div>
+          </div>
+          <div class="meta-box">
+            <div class="meta-box-label">Evaluation Phase</div>
+            <div class="meta-box-val">Academic Year 2025–2026</div>
+            <div class="meta-box-val" style="font-size:12px; color:var(--text-muted); margin-top:2px;">Prototype Defense & Verification</div>
+          </div>
+        </div>
+
+        <div style="font-size: 12px; color: var(--text-dim); margin-top: 20px;">
+          Strict Academic Research Project Presentation • Designed in accordance with NBA & ABET Capstone Criteria
+        </div>
+      </div>
+      <div class="speaker-note-data" style="display:none;">
+        "Respected committee members and examiners, good morning. Welcome to our Mid-Semester Examination defense for our Engineering Design and Innovation research project titled 'ARGUS: AI-Powered Business Expansion Decision-Support Platform for Startups.' Small and medium enterprises account for the vast majority of global businesses, yet expanding into foreign markets remains an opaque, high-risk process fraught with fragmented economic data and dense statutory regulations. In this presentation, we will walk you through our academic literature survey, the identified research gaps, our formal problem statement, our hybrid scoring and retrieval-augmented methodology, our current prototype results, and our formal mapping to EDI Course Outcomes, Program Outcomes, and Sustainable Development Goals."
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 2: 1. INTRODUCTION                   -->
+    <!-- ========================================== -->
+    <section class="slide" id="slide-2" data-index="2">
+      <div class="slide-header">
+        <div>
+          <div class="slide-section-label">Section 1</div>
+          <h2 class="slide-title">1. Introduction: The SME Cross-Border Expansion Challenge</h2>
+        </div>
+        <div class="slide-meta-pill">Context & Platform Premise</div>
+      </div>
+
+      <div class="grid-2" style="margin-bottom: 16px;">
+        <div class="card card-highlight">
+          <div class="card-title gold">The Information Asymmetry Crisis</div>
+          <ul>
+            <li><strong>Severe Resource Inequality:</strong> While multinational enterprises (MNEs) retain specialized Big Four legal, tax, and market consulting counsels, early-stage startups face prohibitive consulting fees ($50k–$200k) for initial feasibility scoping.</li>
+            <li><strong>Heterogeneous, Disconnected Data Repositories:</strong> Critical decision inputs are distributed across disparate sources: national tax agencies, labor ministry gazettes, commercial company registries, and international macro datasets.</li>
+            <li><strong>High Failure Rates:</strong> Up to 60% of international market expansions suffer delays or unexpected financial burdens due to overlooked statutory compliances, foreign worker quota caps, or localized tax withholdings.</li>
+          </ul>
+        </div>
+
+        <div class="card card-blue">
+          <div class="card-title blue">The ARGUS Decision-Support Paradigm</div>
+          <ul>
+            <li><strong>Unified Decision Matrix:</strong> Aggregates macroeconomic indicators, local wage benchmarks, statutory visa limits, and company formation rules into a single analytical platform.</li>
+            <li><strong>Explicit Analytical Roles (Not a Chatbot):</strong>
+              <div style="margin-top: 6px; padding: 8px 12px; background: rgba(0,0,0,0.3); border-radius: 6px; border-left: 2px solid var(--warm-gold);">
+                <strong>Scoring & Financial Engine:</strong> Computes deterministic suitability scores and first-year CapEx/OpEx.<br>
+                <strong>Regulatory RAG Layer:</strong> Semantically retrieves and explains authoritative statutory clauses with document and page citations.
+              </div>
+            </li>
+            <li><strong>Explainable Outputs:</strong> Replaces opaque single-number rankings with decomposed factor contributions and phased chronological roadmaps.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="background: rgba(20, 36, 58, 0.5);">
+        <div style="display: flex; align-items: center; justify-content: space-around; text-align: center; gap: 12px;">
+          <div>
+            <div style="font-size: 11px; color: var(--warm-gold); font-weight: 700;">MARKET DATA</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">World Bank WDI, IMF WEO</div>
+          </div>
+          <div style="color: var(--light-blue);">+</div>
+          <div>
+            <div style="font-size: 11px; color: var(--warm-gold); font-weight: 700;">BUSINESS READY</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">World Bank B-READY 2024</div>
+          </div>
+          <div style="color: var(--light-blue);">+</div>
+          <div>
+            <div style="font-size: 11px; color: var(--warm-gold); font-weight: 700;">LABOUR INTELLIGENCE</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">ILOSTAT, MOM / Pass Quotas</div>
+          </div>
+          <div style="color: var(--light-blue);">+</div>
+          <div>
+            <div style="font-size: 11px; color: var(--warm-gold); font-weight: 700;">REGULATORY RAG</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Official Legal Gazettes & PDFs</div>
+          </div>
+          <div style="color: var(--warm-gold); font-weight: 800;">➔ ARGUS DECISION ENGINE</div>
+        </div>
+      </div>
+      <div class="speaker-note-data" style="display:none;">
+        "To contextualize our research: international market entry is a critical strategic inflection point for tech ventures, but it is currently burdened by severe information asymmetry. When an early-stage startup plans to enter Singapore, the UAE, or Germany, the required intelligence is severely fragmented across company registries, tax authorities, and labor ministries. Traditional advisory services cost tens of thousands of dollars, which early-stage founders cannot afford. ARGUS bridges this gap. We emphasize that ARGUS is not a conversational chatbot; it is an analytical decision-support system that separates deterministic multi-attribute scoring and financial modeling from grounded regulatory document retrieval."
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 3: 2. LITERATURE SURVEY (PART 1)     -->
+    <!-- ========================================== -->
+    <section class="slide" id="slide-3" data-index="3">
+      <div class="slide-header">
+        <div>
+          <div class="slide-section-label">Section 2</div>
+          <h2 class="slide-title">2. Literature Survey (Part 1): Regulatory RAG & Cross-Border AI</h2>
+        </div>
+        <div class="slide-meta-pill">Peer-Reviewed State-of-the-Art</div>
+      </div>
+
+      <p style="margin-bottom: 12px;">Evaluation of recent academic scholarship applying Natural Language Processing and Retrieval-Augmented Generation to statutory compliance, legal governance, and cross-border commercial transactions:</p>
+
+      <table class="academic-table">
+        <thead>
+          <tr>
+            <th style="width: 18%;">Citation & Author</th>
+            <th style="width: 14%;">Venue & Year</th>
+            <th style="width: 22%;">Methodology / Approach</th>
+            <th style="width: 22%;">Key Scholarly Finding</th>
+            <th style="width: 24%;">Relevance & Identified Gap for ARGUS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>J. Li and A. Zhou</strong> [1]</td>
+            <td><span class="badge-code">arXiv / 2026</span><br>Legal Informatics</td>
+            <td>Multi-regulation RAG framework using hierarchical vector partitioning across multi-jurisdictional legal corpuses.</td>
+            <td>Demonstrated that grounded RAG reduces statutory hallucination by over 74% in cross-border digital commerce governance compared to vanilla LLMs.</td>
+            <td><strong>Relevance:</strong> Validates document chunking and source-grounded retrieval.<br><strong>Limitation:</strong> Confined solely to legal compliance checks; does not model corporate setup budgets, workforce quotas, or country suitability rankings.</td>
+          </tr>
+          <tr>
+            <td><strong>R. Singh et al.</strong> [2]</td>
+            <td><span class="badge-code">arXiv / 2026</span><br>Regulatory Sci.</td>
+            <td>Federated AI-enabled continuously updating regulatory intelligence system (AICURIS) with domain-specific ontologies.</td>
+            <td>Temporal tracking and federated metadata tagging are essential to prevent stale regulatory interpretations during policy revisions.</td>
+            <td><strong>Relevance:</strong> Guides our regulatory PDF ingestion pipeline, metadata schema, and version tracking.<br><strong>Limitation:</strong> Strictly tailored to clinical human therapeutics; lacks applicability to generalized commercial business expansion.</td>
+          </tr>
+          <tr>
+            <td><strong>X. Chen and L. Wang</strong> [3]</td>
+            <td><span class="badge-code">IEEE / 2024</span><br>Digital Economy</td>
+            <td>Legal analytics and NLP classification for identifying dispute risks in cross-border e-commerce operations.</td>
+            <td>AI-assisted regulatory classification reduces initial legal scoping times by 68% for international cross-border merchants.</td>
+            <td><strong>Relevance:</strong> Confirms high demand for automated regulatory intelligence in cross-border operations.<br><strong>Limitation:</strong> Focuses only on post-entry disputes rather than pre-entry jurisdictional selection and holistic financial feasibility.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="card card-highlight" style="margin-top: 14px; padding: 10px 16px;">
+        <span style="color: var(--warm-gold); font-weight: 700;">Scholarly Synthesis:</span>
+        Existing legal and regulatory AI systems confirm that RAG is effective for statutory grounding, but treat legal intelligence in complete isolation from market feasibility, workforce planning, and capital cost constraints.
+      </div>
+      <div class="speaker-note-data" style="display:none;">
+        "Slide 3 reviews recent literature on AI and Retrieval-Augmented Generation for regulatory and cross-border domains. Li and Zhou in 2026 demonstrated that multi-jurisdiction RAG significantly mitigates hallucination when interpreting cross-border digital commerce rules, validating our technical choice of grounded retrieval over zero-shot prompting. Singh et al. in 2026 demonstrated the importance of federated metadata tagging and temporal tracking in AICURIS. Furthermore, an IEEE 2024 study demonstrated that AI-driven legal analytics significantly reduces initial cross-border legal scoping time. However, every one of these systems suffers from a critical limitation: they act as isolated compliance search engines without evaluating market demand, workforce availability, or capitalized setup costs."
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 4: 2. LITERATURE SURVEY (PART 2)     -->
+    <!-- ========================================== -->
+    <section class="slide" id="slide-4" data-index="4">
+      <div class="slide-header">
+        <div>
+          <div class="slide-section-label">Section 2</div>
+          <h2 class="slide-title">2. Literature Survey (Part 2): Market Selection & Global Datasets</h2>
+        </div>
+        <div class="slide-meta-pill">Macro Benchmarks & Decision Theory</div>
+      </div>
+
+      <p style="margin-bottom: 12px;">Review of foundational Multi-Criteria Decision Making (MCDM) theories for international market selection and multilateral indicator infrastructures:</p>
+
+      <table class="academic-table">
+        <thead>
+          <tr>
+            <th style="width: 18%;">Citation & Author</th>
+            <th style="width: 14%;">Venue & Year</th>
+            <th style="width: 22%;">Methodology / Approach</th>
+            <th style="width: 22%;">Key Scholarly Finding</th>
+            <th style="width: 24%;">Relevance & Identified Gap for ARGUS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>S. Sakarya et al.</strong> [4]</td>
+            <td><span class="badge-code">Int. Mktg. Rev.</span><br>2007 (Foundational)</td>
+            <td>Quantitative and qualitative multi-criteria International Market Selection (IMS) model for emerging market entry.</td>
+            <td>Traditional IMS models over-index on historical macro indicators and fail to capture real-time regulatory flexibility and operational agility.</td>
+            <td><strong>Relevance:</strong> Provides foundational taxonomy: Market Potential, Commercial Infrastructure, and Institutional Risk.<br><strong>Limitation:</strong> Static, manual indicator scoring; lacks dynamic personalization based on startup hiring needs, budget, or automated document retrieval.</td>
+          </tr>
+          <tr>
+            <td><strong>World Bank Group</strong> [5]</td>
+            <td><span class="badge-code">Official Publ.</span><br>B-READY 2024</td>
+            <td>Empirical regulatory benchmarking across 10 operational pillars: Business Entry, Labour, Taxation, Dispute Resolution, etc.</td>
+            <td>Replaced 'Doing Business' with balanced de jure regulatory quality and de facto public service provision indicators across 50+ economies.</td>
+            <td><strong>Relevance:</strong> Provides standardized, authoritative indicator definitions and scoring methodology for regulatory and operational pillars.<br><strong>Limitation:</strong> B-READY provides aggregate macro indicators for researchers; it does not offer dynamic, firm-level expansion recommendations or cost calculators.</td>
+          </tr>
+          <tr>
+            <td><strong>K. Brouthers et al.</strong> [6]</td>
+            <td><span class="badge-code">JIBS</span><br>2016</td>
+            <td>Institutional distance and Transaction Cost Economics (TCE) in digital firm internationalization.</td>
+            <td>Digital enterprises face lower physical asset friction but significantly higher regulatory and data compliance frictions across borders.</td>
+            <td><strong>Relevance:</strong> Validates ARGUS's prioritization of data privacy (PDPA, GDPR) and local workforce requirements in target markets.<br><strong>Limitation:</strong> Theoretical econometric model without an actionable computational decision-support tool for startup founders.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="card card-blue" style="margin-top: 14px; padding: 10px 16px;">
+        <span style="color: var(--light-blue); font-weight: 700;">Dataset Infrastructure Grounding:</span>
+        ARGUS leverages official metrics from World Bank B-READY 2024 (Business Entry, Labour, Tax), ILOSTAT (Wage benchmarks), and OECD corporate tax tables as structured analytical priors, rather than unverified commercial datasets.
+      </div>
+      <div class="speaker-note-data" style="display:none;">
+        "In Part 2 of our literature survey, we examine international market selection theories and global benchmark datasets. Foundational research by Sakarya et al. formulated multi-criteria matrices for international expansion, yet their framework relied on static spreadsheets. In 2024, the World Bank released its new flagship Business Ready (B-READY) framework, replacing Doing Business. B-READY evaluates 10 operational pillars—including business entry, taxation, labor regulation, and dispute resolution—measuring both regulatory rules on paper and public service delivery in practice. However, B-READY produces macroeconomic country summaries, not personalized recommendations. A founder cannot input: 'I have $80,000, 4 software engineers, and need an on-site office in Southeast Asia' and receive an actionable feasibility score. This brings us directly to the identified research gaps."
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 5: 3. RESEARCH GAP                   -->
+    <!-- ========================================== -->
+    <section class="slide" id="slide-5" data-index="5">
+      <div class="slide-header">
+        <div>
+          <div class="slide-section-label">Section 3</div>
+          <h2 class="slide-title">3. Research Gap: Grounded Synthesis from Surveyed Literature</h2>
+        </div>
+        <div class="slide-meta-pill">Evidence-Based Structural Deficiencies</div>
+      </div>
+
+      <div class="grid-2" style="margin-bottom: 16px;">
+        <div class="card card-highlight">
+          <div class="card-title gold">Identified Limitations in Current State-of-the-Art</div>
+          <ul>
+            <li><strong>Gap 1 (Regulatory RAG Isolation):</strong> Existing regulatory RAG systems (Li & Zhou 2026, Singh et al. 2026) focus solely on retrieving/explaining legal clauses rather than evaluating holistic business expansion suitability or financial outlays.</li>
+            <li><strong>Gap 2 (Macro vs. Micro Decoupling):</strong> Benchmark datasets like World Bank B-READY 2024 provide aggregate national scores but do not automatically personalize recommendations based on a startup's industry, budget, or workforce quotas.</li>
+            <li><strong>Gap 3 (Absence of Joint Multi-Domain Analysis):</strong> No existing research framework simultaneously models:
+              <div style="font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--light-blue); margin:6px 0;">
+                [Market Demand] ⨂ [Workforce Quotas] ⨂ [CapEx/OpEx] ⨂ [Tax Regimes] ⨂ [Regulatory Compliance]
+              </div>
+            </li>
+            <li><strong>Gap 4 (Black-Box Scoring vs. Legal Grounding):</strong> Available commercial DSS tools lack transparent mathematical attribution, while generic LLMs hallucinate statutory parameters without verifiable citations.</li>
+          </ul>
+        </div>
+
+        <div class="card card-blue">
+          <div class="card-title blue">The ARGUS Research Opportunity</div>
+          <div style="background: rgba(0,0,0,0.35); padding: 14px; border-radius: 8px; border: 1px dashed var(--surface-border); margin-bottom: 12px;">
+            <div style="font-size: 11px; color: var(--warm-gold); font-weight: 700; text-transform: uppercase;">Core Research Void Addressed</div>
+            <p style="font-size: 13px; color: #FFFFFF; margin-top: 4px;">
+              Development of an <strong>explainable, hybrid decision-support architecture</strong> that couples a deterministic multi-attribute scoring engine with a grounded, vector-retrieval regulatory pipeline specifically tailored to startup resource constraints.
+            </p>
+          </div>
+          <ul>
+            <li><strong>Personalized Micro-Scoring:</strong> Dynamically recalculates Expansion Readiness based on explicit firm-level variables (e.g., number of foreign vs. local hires, capital budget).</li>
+            <li><strong>Transparent Cost Modeling:</strong> Line-item CapEx/OpEx aggregation with provenance tracking: <em>[Official Government Fee]</em>, <em>[Dataset Benchmark]</em>, or <em>[Model Estimate]</em>.</li>
+            <li><strong>Strict Verification Boundaries:</strong> RAG output is tied directly to sovereign PDFs (ACRA, IRAS, MOM, PDPC) with document and page attribution.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 10px 18px; background: rgba(79, 59, 21, 0.3); border: 1px solid var(--golden-brown);">
+        <strong style="color: var(--warm-gold);">Key Academic Takeaway:</strong>
+        Rather than asserting that no tools exist, ARGUS addresses the specific lack of synergy between macro indicator analytics, localized operational cost modeling, and grounded statutory document retrieval.
+      </div>
+      <div class="speaker-note-data" style="display:none;">
+        "On Slide 5, we crystallize the academic research gaps derived directly from our literature survey. Rather than simply asserting that 'no system exists,' we systematically dissect why current solutions fall short. Legal RAG models excel at text retrieval but have zero financial computation or multi-attribute ranking capabilities. Macroeconomic datasets like World Bank B-READY provide validated national indicators but offer no firm-specific personalization. Classical business selection theories remain static academic models without real-time legal grounding. The core gap we address is the lack of an integrated, explainable decision-support framework that can ingest a startup's unique operational constraints, compute multi-attribute suitability scores, simulate localized multi-year budgets, and ground regulatory obligations directly in official government documentation."
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 6: 4. PROBLEM STATEMENT              -->
+    <!-- ========================================== -->
+    <section class="slide" id="slide-6" data-index="6">
+      <div class="slide-header">
+        <div>
+          <div class="slide-section-label">Section 4</div>
+          <h2 class="slide-title">4. Formal Academic Problem Statement</h2>
+        </div>
+        <div class="slide-meta-pill">Mathematical & Engineering Formulation</div>
+      </div>
+
+      <div class="card card-highlight" style="margin-bottom: 20px; padding: 20px 24px; background: rgba(20, 36, 58, 0.85);">
+        <div style="font-size: 11px; font-weight: 700; color: var(--warm-gold); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px;">FORMAL RESEARCH PROBLEM DEFINITION</div>
+        <p style="font-size: 14.5px; color: #FFFFFF; font-style: italic; line-height: 1.7;">
+          "Early-stage ventures and small-to-medium enterprises (SMEs) evaluating international business expansion encounter severe information asymmetry and multi-attribute decision complexity. Critical determinants—including market absorptive capacity, legal incorporation formalities, statutory corporate taxation, statutory employment quotas, foreign talent visa ceilings, and initial capitalized setup expenditure—are distributed across heterogeneous, siloed, and often discordant jurisdictional repositories.
+          <br><br>
+          Current exploratory methodologies force decision-makers to manually aggregate disparate economic datasets and dense regulatory prose without systematic cross-border standardization, resulting in prohibitive search costs, delayed market entry, and heightened regulatory non-compliance risks. There exists an imperative academic and technological need for an integrated, explainable decision-support system that synthesizes structured macroeconomic indicators with grounded regulatory knowledge retrieval to provide personalized, mathematically transparent country suitability assessments and operational expansion roadmaps for resource-constrained startups."
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title blue" style="font-size: 14px;">1. Information Fragmentation</div>
+          <p style="font-size: 12.5px;">Heterogeneous, non-standardized formats across national agencies, making comparative evaluation across candidate jurisdictions manual, labor-intensive, and error-prone.</p>
+        </div>
+        <div class="card">
+          <div class="card-title gold" style="font-size: 14px;">2. Regulatory & Labour Friction</div>
+          <p style="font-size: 12.5px;">Statutory quotas, foreign talent levy thresholds (e.g., Singapore COMPASS framework), and corporate residency rules that invalidate simple low-cost assumptions.</p>
+        </div>
+        <div class="card">
+          <div class="card-title blue" style="font-size: 14px;">3. Budget Unpredictability</div>
+          <p style="font-size: 12.5px;">Failure of simple calculators to capture hidden mandatory costs: commercial office leases, statutory audit fees, registration capital, and mandatory benefits.</p>
+        </div>
+      </div>
+      <div class="speaker-note-data" style="display:none;">
+        "This brings us to our formal problem statement. Expanding an enterprise internationally is a multi-attribute decision problem under uncertainty. As formulated on the slide, founders face interdependent decision axes: market capacity, regulatory setup, labor and employment quotas, fiscal taxation, capital expenditure, and institutional risk. When these domains are evaluated in isolation, costly mistakes happen: a country may look attractive due to zero corporate tax, but possess impossible foreign visa quotas or exorbitant mandatory office rents that exhaust the startup's runway. Our problem statement focuses on eliminating this fragmentation through a unified, explainable decision-support framework."
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 7: 5. OBJECTIVES                     -->
+    <!-- ========================================== -->
+    <section class="slide" id="slide-7" data-index="7">
+      <div class="slide-header">
+        <div>
+          <div class="slide-section-label">Section 5</div>
+          <h2 class="slide-title">5. Research Objectives</h2>
+        </div>
+        <div class="slide-meta-pill">7 Measurable Engineering Goals</div>
+      </div>
+
+      <div class="grid-2" style="gap: 16px;">
+        <div class="card card-blue" style="padding: 14px 18px;">
+          <div class="card-title blue" style="font-size: 14px;">Obj 1: Multi-Source Indicator Framework</div>
+          <p style="font-size: 13px;">To synthesize a unified country indicator schema integrating business environment, economic stability, taxation frameworks, and labor metrics derived from validated international repositories (World Bank B-READY, ILO, OECD, national registries).</p>
+        </div>
+
+        <div class="card card-highlight" style="padding: 14px 18px;">
+          <div class="card-title gold" style="font-size: 14px;">Obj 2: Personalized Suitability Scoring Engine</div>
+          <p style="font-size: 13px;">To develop and implement a multi-attribute decision analysis (MCDA) scoring algorithm that computes an <strong>Expansion Readiness Score (0–100)</strong> parameterized by user-specified industry, workforce distribution, target objectives, and factor weights.</p>
+        </div>
+
+        <div class="card card-blue" style="padding: 14px 18px;">
+          <div class="card-title blue" style="font-size: 14px;">Obj 3: Parametric Cost Estimation Module</div>
+          <p style="font-size: 13px;">To formulate a transparent, multi-tier financial estimation model capable of computing first-year capitalized expenditures (incorporation, licensing, office leasing) and operational expenditures (localized salaries, statutory social security, compliance audits).</p>
+        </div>
+
+        <div class="card card-highlight" style="padding: 14px 18px;">
+          <div class="card-title gold" style="font-size: 14px;">Obj 4: Workforce Feasibility & Quota Model</div>
+          <p style="font-size: 13px;">To construct a role-based labor analysis mechanism that evaluates talent availability across 14 specialized job categories, local wage benchmarks, and jurisdictional foreign-to-local worker quota constraints (e.g., Singapore COMPASS/S-Pass criteria).</p>
+        </div>
+
+        <div class="card card-blue" style="padding: 14px 18px;">
+          <div class="card-title blue" style="font-size: 14px;">Obj 5: Grounded Regulatory Retrieval Pipeline (RAG)</div>
+          <p style="font-size: 13px;">To build a domain-specific Retrieval-Augmented Generation subsystem using dense vector embeddings and persistent vector storage to ingest, chunk, index, and retrieve official statutory regulatory publications (ACRA, IRAS, MOM, PDPC) with verifiable citations.</p>
+        </div>
+
+        <div class="card card-highlight" style="padding: 14px 18px;">
+          <div class="card-title gold" style="font-size: 14px;">Obj 6 & 7: Explainable Roadmaps & Scenario Validation</div>
+          <p style="font-size: 13px;">To design an explainable user interface that decomposes suitability scores into positive/cautionary drivers with milestone roadmaps, and empirically validate prototype consistency across representative cross-border scenarios.</p>
+        </div>
+      </div>
+
+      <div style="font-size: 11.5px; color: var(--text-dim); margin-top: 12px; text-align: right;">
+        *Note: In alignment with academic rigor, objectives are framed as systematic developmental and evaluative goals currently verified in prototype stage.
+      </div>
+      <div class="speaker-note-data" style="display:none;">
+        "To address this problem systematically, we formulated seven measurable research objectives. First, unifying multi-source macro indicators into a standardized schema. Second, engineering a transparent multi-attribute scoring engine for Expansion Readiness. Third, developing a parameterized first-year capital and operational cost model. Fourth, implementing role-based labor quota and salary feasibility modeling. Fifth, building a grounded RAG pipeline specifically indexing authoritative government regulatory documentation. Sixth, generating explainable attribution breakdowns and chronological roadmaps. And seventh, verifying the prototype across real-world enterprise scenarios. Importantly, each objective maps directly to an engineering component that we have designed and partially implemented."
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 8: 6. METHODOLOGY (WORKFLOW)         -->
+    <!-- ========================================== -->
+    <section class="slide" id="slide-8" data-index="8">
+      <div class="slide-header">
+        <div>
+          <div class="slide-section-label">Section 6</div>
+          <h2 class="slide-title">6. Methodology: End-to-End Decision Framework</h2>
+        </div>
+        <div class="slide-meta-pill">Analytical Pipeline Design</div>
+      </div>
+
+      <p style="margin-bottom: 14px;">The ARGUS decision framework executes across four sequential, decoupled operational stages:</p>
+
+      <div class="flow-row">
+        <div class="flow-step">
+          <div class="flow-step-num">PHASE 1</div>
+          <div class="flow-step-title">Elicitation & Constraints</div>
+          <div class="flow-step-desc">Industry, capital budget, expansion goal, 14-role workforce planner, factor priority weights (0–100)</div>
+        </div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-step">
+          <div class="flow-step-num">PHASE 2</div>
+          <div class="flow-step-title">Indicator Normalization</div>
+          <div class="flow-step-desc">World Bank B-READY pillars, ILO wage scales, OECD tax tables, statutory visa ceilings</div>
+        </div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-step active-step">
+          <div class="flow-step-num">PHASE 3</div>
+          <div class="flow-step-title">Dual Decision Engine</div>
+          <div class="flow-step-desc"><strong>Engine A:</strong> Multi-Attribute Scoring & Cost Model<br><strong>Engine B:</strong> ChromaDB Regulatory Vector RAG</div>
+        </div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-step">
+          <div class="flow-step-num">PHASE 4</div>
+          <div class="flow-step-title">Explainable Synthesis</div>
+          <div class="flow-step-desc">Expansion Readiness Score (0–100), CapEx/OpEx itemization, grounded legal citations, milestone roadmap</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 18px;">
+        <div class="card card-blue">
+          <div class="card-title blue">Engine A: Deterministic Quantitative Analytics</div>
+          <ul>
+            <li><strong>Objective:</strong> High-throughput, reproducible, zero-hallucination computation of country rankings and financial requirements.</li>
+            <li><strong>Inputs:</strong> Startup parameters + normalized country database.</li>
+            <li><strong>Outputs:</strong> Readiness metrics (Market, Labour, Cost, Regulatory, Risk, Infrastructure) + 1st-year budget ledger.</li>
+          </ul>
+        </div>
+
+        <div class="card card-highlight">
+          <div class="card-title gold">Engine B: Grounded Statutory Vector RAG</div>
+          <ul>
+            <li><strong>Objective:</strong> Contextual interpretation of complex jurisdictional legal acts, tax exceptions, and visa prerequisites.</li>
+            <li><strong>Corpus:</strong> Official sovereign PDFs (ACRA, IRAS, MOM, PDPC).</li>
+            <li><strong>Outputs:</strong> Verifiable, hallucination-resistant answers tagged with primary source titles and page numbers.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="speaker-note-data" style="display:none;">
+        "Slide 8 depicts the complete end-to-end research methodology of ARGUS. The framework operates in four clearly defined phases. Phase 1 elicits parametric requirements: business domain, expansion goals, granular workforce needs across 14 roles, and user-assigned factor weights. Phase 2 aggregates and normalizes structured macro indicators from verified repositories. In Phase 3, the execution splits into two complementary engines: our algorithmic scoring and cost engine, which computes mathematical suitability and financial outlay; and our regulatory RAG subsystem, which indexes official government publications in ChromaDB and retrieves authoritative legal clauses. Finally, Phase 4 synthesizes these outputs into explainable score attributions, localized financial statements, and a phased chronological roadmap."
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 9: 6. METHODOLOGY (ALGORITHMS)       -->
+    <!-- ========================================== -->
+    <section class="slide" id="slide-9" data-index="9">
+      <div class="slide-header">
+        <div>
+          <div class="slide-section-label">Section 6</div>
+          <h2 class="slide-title">6. Methodology: Algorithmic & Mathematical Modeling</h2>
+        </div>
+        <div class="slide-meta-pill">Scoring & Cost Mechanics</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card card-highlight">
+          <div class="card-title gold">1. Multi-Attribute Suitability Formulation</div>
+          <p style="font-size: 13px; margin-bottom: 8px;">The overall <strong>Expansion Readiness Score</strong> $S(C, P)$ for candidate country $C$ given profile $P$ is computed as:</p>
+          <div style="background: rgba(0,0,0,0.4); padding: 10px; border-radius: 6px; font-family:'JetBrains Mono', monospace; font-size: 12px; color: var(--warm-gold); margin-bottom: 10px;">
+            S(C, P) = min(100, ∑ [w_i × s_i(C, P)])
+          </div>
+          <ul style="font-size: 12.5px;">
+            <li><strong>Weights $w_i$:</strong> User-normalized priority weights ($\sum w_i = 1.0$), with default priors: Market (20%), Cost (25%), Labour (25%), Regulatory (15%), Business Env (10%), Risk (5%).</li>
+            <li><strong>Labour Penalty $\lambda$:</strong> Feasibility assessment applies penalty deductions when requested foreign headcount exceeds sovereign visa quota thresholds.</li>
+            <li><strong>Cost Fit Metric $s_c$:</strong> Evaluates the ratio of founder capital budget $B$ to modeled 1st-year total cost $TC_1$:
+              <div style="font-size: 11.5px; color: var(--text-dim); margin-top: 3px;">
+                Ratio ≥ 1.4 ➔ 19/20 (Sufficient) | Ratio &lt; 0.7 ➔ ≤9/20 (Under-budgeted)
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card card-blue">
+          <div class="card-title blue">2. First-Year Capital Cost Aggregation ($TC_1$)</div>
+          <p style="font-size: 13px; margin-bottom: 8px;">Total capital outlay is decomposed into four granular operational tiers:</p>
+          <div style="background: rgba(0,0,0,0.4); padding: 10px; border-radius: 6px; font-family:'JetBrains Mono', monospace; font-size: 12px; color: var(--light-blue); margin-bottom: 10px;">
+            TC₁(C) = C_setup(C) + C_workforce(C) + C_operating(C) + C_compliance(C)
+          </div>
+          <ul style="font-size: 12.5px;">
+            <li><strong>Setup Outlay $C_{\text{setup}}$:</strong> Statutory incorporation fees, resident director bonds, licensing fees.</li>
+            <li><strong>Workforce Outlay $C_{\text{workforce}}$:</strong> Localized role salaries (14 categories) + mandatory employer contributions (CPF, Social Security) + visa levies.</li>
+            <li><strong>Operating Outlay $C_{\text{operating}}$:</strong> Commercial physical/hybrid office leases + local utility overhead.</li>
+            <li><strong>Audit & Compliance $C_{\text{compliance}}$:</strong> Mandatory statutory annual corporate accounting and tax returns.</li>
+          </ul>
+          <div style="font-size: 11px; color: var(--warm-gold); margin-top: 6px; font-weight: 600;">
+            ✔ Every cost item carries an audited label: [Official Fee], [Dataset Benchmark], or [Model Estimate].
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 14px; background: rgba(20, 36, 58, 0.4);">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="font-size: 12px; color: #FFFFFF; font-weight: 600;">Mathematical Explainability Guarantee:</div>
+          <div style="font-size: 12px; color: var(--text-muted);">
+            Outputs avoid black-box obscurity by generating factor attribution cards explaining point contributions and deductions directly to the founder.
+          </div>
+        </div>
+      </div>
+      <div class="speaker-note-data" style="display:none;">
+        "On Slide 9, we present the mathematical and algorithmic formulation of our decision engine. We deliberately chose an explainable Multi-Attribute Utility formulation rather than an opaque black-box neural network for the current prototype. The total Expansion Readiness Score is bounded between 0 and 100, combining six sub-scores weighted by user priorities. Notice our Cost Fit function: it directly computes the ratio between the founder's allocated capital and our calculated First-Year Total Cost. The total cost aggregates setup fees, localized role-by-role compensation with mandatory statutory employer contributions, office leases, and annual compliance audit fees. Crucially, every line item carries an explicit provenance tag—whether it is an official statutory fee, a dataset benchmark, or an algorithmic estimate—ensuring complete financial transparency."
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 10: 6. METHODOLOGY (ARCHITECTURE)    -->
+    <!-- ========================================== -->
+    <section class="slide" id="slide-10" data-index="10">
+      <div class="slide-header">
+        <div>
+          <div class="slide-section-label">Section 6</div>
+          <h2 class="slide-title">6. Methodology: System Architecture & RAG Pipeline</h2>
+        </div>
+        <div class="slide-meta-pill">Full-Stack Technical Topology</div>
+      </div>
+
+      <div class="grid-3" style="margin-bottom: 16px;">
+        <div class="card">
+          <div class="card-title blue" style="font-size: 13.5px;">Client & Visualization Layer</div>
+          <ul style="font-size: 12px;">
+            <li><strong>Framework:</strong> React 18 with TypeScript & Vite SPA architecture.</li>
+            <li><strong>Design Tokens:</strong> Professional dark navy SaaS aesthetic (#14243A, #003E8F, #FFD482).</li>
+            <li><strong>State Stores:</strong> Real-time parametric scenario simulator and dynamic workforce planner.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title gold" style="font-size: 13.5px;">Decision & Analytical Core</div>
+          <ul style="font-size: 12px;">
+            <li><strong>ScoringEngine.ts:</strong> Multi-factor utility calculator & explainability breakdown generator.</li>
+            <li><strong>CostCalculator.ts:</strong> Multi-tier CapEx/OpEx localization with currency conversion service.</li>
+            <li><strong>LabourService.ts:</strong> 14-role benchmark salary & visa quota compliance checks.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title blue" style="font-size: 13.5px;">Regulatory RAG Subsystem</div>
+          <ul style="font-size: 12px;">
+            <li><strong>Extraction:</strong> PyPDF page-by-page statutory parsing with document metadata.</li>
+            <li><strong>Chunking:</strong> 1,200 character chunks with 200 character sliding overlap.</li>
+            <li><strong>Embeddings:</strong> <span class="badge-code">all-MiniLM-L6-v2</span> (384-dimensional dense vectors).</li>
+            <li><strong>Vector Store:</strong> ChromaDB PersistentClient (Cosine similarity).</li>
+            <li><strong>Synthesis:</strong> Google Gemini 2.5 Flash with strict grounding prompts.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card card-highlight">
+        <div class="card-title gold" style="font-size: 14px;">Regulatory Ingestion Pipeline Schematic</div>
+        <div class="flow-row" style="margin: 8px 0;">
+          <div class="flow-step" style="padding: 8px 10px;">
+            <div class="flow-step-num">CORPUS</div>
+            <div class="flow-step-title" style="font-size: 11px;">Official Sovereign PDFs</div>
+            <div class="flow-step-desc">ACRA, IRAS, MOM, PDPC</div>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-step" style="padding: 8px 10px;">
+            <div class="flow-step-num">CHUNKING</div>
+            <div class="flow-step-title" style="font-size: 11px;">Sliding Window</div>
+            <div class="flow-step-desc">1200 char / 200 overlap</div>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-step" style="padding: 8px 10px;">
+            <div class="flow-step-num">VECTORS</div>
+            <div class="flow-step-title" style="font-size: 11px;">all-MiniLM-L6-v2</div>
+            <div class="flow-step-desc">384-dim dense vectors</div>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-step" style="padding: 8px 10px;">
+            <div class="flow-step-num">STORAGE</div>
+            <div class="flow-step-title" style="font-size: 11px;">ChromaDB Store</div>
+            <div class="flow-step-desc">Cosine Similarity Top-5</div>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-step active-step" style="padding: 8px 10px;">
+            <div class="flow-step-num">OUTPUT</div>
+            <div class="flow-step-title" style="font-size: 11px;">Grounded Synthesis</div>
+            <div class="flow-step-desc">Gemini 2.5 Flash + Citations</div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-note-data" style="display:none;">
+        "Slide 10 details our technical system architecture. We designed ARGUS with a strictly decoupled multi-tier stack. The client is built in React and TypeScript, providing an interactive dashboard with real-time parametric sensitivity controls. The decision layer houses our scoring engine, cost calculation service, and labor quota validator. Running in parallel is our Python-based Regulatory RAG subsystem. Documents are parsed page-by-page using PyPDF, chunked into 1,200-character segments with a 200-character sliding overlap, transformed into 384-dimensional embeddings via all-MiniLM-L6-v2, and indexed in ChromaDB. When a query is issued, the top-5 most relevant chunks are injected into Google Gemini 2.5 Flash under a strict grounding prompt. This maintains a clean boundary: quantitative suitability is handled deterministically, while legal interpretation is handled via grounded retrieval."
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 11: 7. CURRENT PROTOTYPE RESULTS     -->
+    <!-- ========================================== -->
+    <section class="slide" id="slide-11" data-index="11">
+      <div class="slide-header">
+        <div>
+          <div class="slide-section-label">Section 7</div>
+          <h2 class="slide-title">7. Results: Current Prototype Capabilities & Verification</h2>
+        </div>
+        <div class="slide-meta-pill">Functional Evaluation</div>
+      </div>
+
+      <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid var(--accent-green); border-radius: 6px; padding: 8px 14px; margin-bottom: 14px; font-size: 12px; color: #D1FAE5;">
+        <strong>Academic Integrity Notice:</strong> Evaluation is conducted across functional verification, algorithmic determinism, and retrieval grounding fidelity. No synthetic classification accuracy percentages (e.g., fabricated '95% precision') are reported.
+      </div>
+
+      <div class="grid-2" style="margin-bottom: 14px;">
+        <table class="academic-table" style="margin-top:0;">
+          <thead>
+            <tr>
+              <th>Verified Prototype Module</th>
+              <th>Status</th>
+              <th>Demonstrated Engineering Capability</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Startup Elicitation & Profiling</strong></td>
+              <td><span class="badge-code" style="color:var(--accent-green); border-color:var(--accent-green);">Operational</span></td>
+              <td>Full capture of domain, business model, budget, 14-role workforce planner, and factor priority weights.</td>
+            </tr>
+            <tr>
+              <td><strong>Expansion Readiness Scoring</strong></td>
+              <td><span class="badge-code" style="color:var(--accent-green); border-color:var(--accent-green);">Operational</span></td>
+              <td>Real-time multi-factor scoring (0–100) across Singapore, UAE, Germany with explainable factor breakdown.</td>
+            </tr>
+            <tr>
+              <td><strong>Granular Cost Calculator</strong></td>
+              <td><span class="badge-code" style="color:var(--accent-green); border-color:var(--accent-green);">Operational</span></td>
+              <td>Decomposes 1st-year CapEx/OpEx (incorporation, wages, rent, audit) with source provenance tags.</td>
+            </tr>
+            <tr>
+              <td><strong>Workforce Quota Assessment</strong></td>
+              <td><span class="badge-code" style="color:var(--accent-green); border-color:var(--accent-green);">Operational</span></td>
+              <td>Evaluates salary benchmarks and detects foreign visa quota saturation (e.g., Singapore COMPASS flags).</td>
+            </tr>
+            <tr>
+              <td><strong>Regulatory RAG Pipeline</strong></td>
+              <td><span class="badge-code" style="color:var(--accent-green); border-color:var(--accent-green);">Operational</span></td>
+              <td>Indexes Singapore statutory PDFs (ACRA, IRAS, MOM, PDPC) in ChromaDB; retrieves grounded answers with page citations.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="card card-highlight">
+          <div class="card-title gold" style="font-size: 14px;">Demonstrated System Artifacts</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px;">
+            <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; border: 1px solid var(--surface-border); text-align: center;">
+              <div style="font-size: 11px; font-weight: 600; color: var(--light-blue); margin-bottom: 4px;">Scoring & Dashboard</div>
+              <img src="./presentation_assets/dashboard_hero_1790151504939.png" alt="ARGUS Dashboard" style="width: 100%; height: 85px; object-fit: cover; border-radius: 4px;" onerror="this.style.display='none'">
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">Readiness Scores & KPI Cards</div>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; border: 1px solid var(--surface-border); text-align: center;">
+              <div style="font-size: 11px; font-weight: 600; color: var(--warm-gold); margin-bottom: 4px;">Regulatory RAG</div>
+              <img src="./presentation_assets/regulations_rag_1790151769133.png" alt="ARGUS RAG Interface" style="width: 100%; height: 85px; object-fit: cover; border-radius: 4px;" onerror="this.style.display='none'">
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">ACRA & MOM Citation Retrieval</div>
+            </div>
+          </div>
+          <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 10px;">
+            ✔ Functional testing confirms deterministic scoring outputs, responsive UI state synchronization, and verifiable document grounding.
+          </div>
+        </div>
+      </div>
+      <div class="speaker-note-data" style="display:none;">
+        "On Slide 11, we present our current prototype results. In strict accordance with academic research standards, we do not present fabricated experimental accuracy figures because this system is a decision-support prototype, not a classification benchmark. We evaluated our system across functional completeness and operational validity. As shown in the table, our interactive elicitation pipeline successfully configures complex multi-role teams across 14 categories. The scoring engine deterministically computes Expansion Readiness scores with complete explainability. The cost calculator accurately models setup fees, local salaries, and tax burdens. Our Regulatory RAG pipeline is fully operational for our primary prototype jurisdiction—Singapore—correctly retrieving statutory clauses from ACRA, IRAS, MOM, and PDPC publications with page-level attribution. These functional milestones confirm the engineering feasibility of our proposed architecture."
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 12: 8. CONCLUSION & FUTURE WORK      -->
+    <!-- ========================================== -->
+    <section class="slide" id="slide-12" data-index="12">
+      <div class="slide-header">
+        <div>
+          <div class="slide-section-label">Section 8</div>
+          <h2 class="slide-title">8. Conclusion & Future Development Scope</h2>
+        </div>
+        <div class="slide-meta-pill">Synthesis & Research Trajectory</div>
+      </div>
+
+      <div class="grid-2" style="margin-bottom: 16px;">
+        <div class="card card-blue">
+          <div class="card-title blue">Summary of Core Contributions</div>
+          <ul>
+            <li><strong>Integrated Paradigm:</strong> Demonstrated the feasibility of coupling structured macro indicators (World Bank B-READY, ILO, OECD) with grounded regulatory text retrieval in a single decision pass.</li>
+            <li><strong>Explainable Decision Support:</strong> Eliminated black-box recommendations via decomposed multi-attribute utility scoring and auditable cost provenance tags.</li>
+            <li><strong>Grounded Regulatory RAG:</strong> Established a working vector retrieval architecture for Singapore corporate, tax, and labor regulations with page-level citations.</li>
+          </ul>
+        </div>
+
+        <div class="card card-highlight">
+          <div class="card-title gold">Current Prototype Limitations</div>
+          <ul>
+            <li><strong>Corpus Breadth:</strong> Regulatory RAG currently indexes Singapore statutory documents; UAE and Germany are modeled via structured configuration profiles.</li>
+            <li><strong>Static Policy Ingestion:</strong> Statutory gazettes are ingested via batch offline PDF parsing rather than real-time web scrapers.</li>
+            <li><strong>Weight Calibration:</strong> Scoring relies on multi-attribute utility theory; empirical tuning against longitudinal foreign direct investment outcomes is in progress.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="background: rgba(20, 36, 58, 0.6); border-top: 3px solid var(--warm-gold);">
+        <div class="card-title gold" style="font-size: 14px;">Future Engineering & Research Trajectory</div>
+        <div class="grid-3" style="margin-top: 8px;">
+          <div>
+            <strong style="color: #FFFFFF; font-size: 12.5px;">1. Supervised ML Ranking:</strong>
+            <p style="font-size: 12px; margin-top: 3px;">Train Learning-to-Rank (LTR) algorithms (e.g., XGBoost, LambdaMART) calibrated against empirical startup expansion success/failure datasets.</p>
+          </div>
+          <div>
+            <strong style="color: #FFFFFF; font-size: 12.5px;">2. Autonomous Document Scraping:</strong>
+            <p style="font-size: 12px; margin-top: 3px;">Implement automated scrapers with diffing algorithms to detect sovereign legislative amendments and refresh ChromaDB indices dynamically.</p>
+          </div>
+          <div>
+            <strong style="color: #FFFFFF; font-size: 12.5px;">3. Multi-Hub Corpus Expansion:</strong>
+            <p style="font-size: 12px; margin-top: 3px;">Ingest and validate complete legal corpuses for additional major innovation hubs: UAE Freezones, Germany (Handelsregister), and the UK.</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-note-data" style="display:none;">
+        "In conclusion, ARGUS addresses a major bottleneck in global entrepreneurship: the fragmentation and complexity of cross-border expansion intelligence. By synergistically integrating structured indicator analytics with grounded regulatory retrieval, we have demonstrated a working prototype that offers transparent, personalized, and explainable decision support for startups. While our current prototype successfully validates this architecture for our primary benchmark jurisdictions, our future roadmap includes expanding statutory document corpuses across additional European and Asian hubs, automating real-time regulatory scraping, and training supervised learning-to-rank models calibrated against historical business expansion datasets. We believe this platform represents a robust foundation for AI-assisted international business intelligence."
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 13: 9. REFERENCES                    -->
+    <!-- ========================================== -->
+    <section class="slide" id="slide-13" data-index="13">
+      <div class="slide-header">
+        <div>
+          <div class="slide-section-label">Section 9</div>
+          <h2 class="slide-title">9. Academic References</h2>
+        </div>
+        <div class="slide-meta-pill">IEEE Standard Format</div>
+      </div>
+
+      <div class="card" style="background: rgba(15, 25, 42, 0.8); border: 1px solid var(--surface-border); max-height: 480px; overflow-y: auto; padding: 18px 24px;">
+        <ul style="list-style-type: none; padding-left: 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.65; color: #CBD5E1;">
+          <li style="margin-bottom: 10px; padding-left: 0;">
+            <strong style="color: var(--warm-gold);">[1]</strong> J. Li and A. Zhou, "Multi-Regulation RAG for AI Product Counsel: A Legal Governance Framework for Cross-Border Digital Commerces," <em>arXiv preprint arXiv:2602.04944</em>, 2026. [Online]. Available: https://arxiv.org/abs/2602.04944
+          </li>
+          <li style="margin-bottom: 10px; padding-left: 0;">
+            <strong style="color: var(--warm-gold);">[2]</strong> R. Singh et al., "Federating AI-related Regulations for Human Therapeutics: An AI-enabled, Continuously Updating Regulatory Intelligence System (AICURIS)," <em>arXiv preprint arXiv:2601.18950</em>, 2026. [Online]. Available: https://arxiv.org/abs/2601.18950
+          </li>
+          <li style="margin-bottom: 10px; padding-left: 0;">
+            <strong style="color: var(--warm-gold);">[3]</strong> X. Chen and L. Wang, "Research on the Countermeasures of AI Technology to Promote the Sustainable Development of Cross-Border E-Commerce Business—Based on Legal Perspective," in <em>Proc. IEEE Int. Conf. on Cross-Border Digital Economy and Commercial Law (CBDECL)</em>, 2024, pp. 112–117.
+          </li>
+          <li style="margin-bottom: 10px; padding-left: 0;">
+            <strong style="color: var(--warm-gold);">[4]</strong> S. Sakarya, M. Eckman, and P. Y. Hyllegard, "Market selection for international expansion: Assessing opportunities in emerging markets," <em>International Marketing Review</em>, vol. 24, no. 2, pp. 208–238, 2007.
+          </li>
+          <li style="margin-bottom: 10px; padding-left: 0;">
+            <strong style="color: var(--warm-gold);">[5]</strong> World Bank Group, <em>Business Ready (B-READY) 2024</em>, Washington, DC: World Bank, 2024. doi: 10.1596/978-1-4648-2044-1. [Online]. Available: https://www.worldbank.org/en/businessready
+          </li>
+          <li style="margin-bottom: 10px; padding-left: 0;">
+            <strong style="color: var(--warm-gold);">[6]</strong> K. D. Brouthers, K. D. Geisser, and F. Rothlauf, "Explaining the internationalization of ibusiness firms," <em>Journal of International Business Studies</em>, vol. 47, no. 5, pp. 513–534, 2016.
+          </li>
+          <li style="margin-bottom: 10px; padding-left: 0;">
+            <strong style="color: var(--warm-gold);">[7]</strong> P. Lewis et al., "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks," in <em>Advances in Neural Information Processing Systems (NeurIPS)</em>, vol. 33, 2020, pp. 9459–9474.
+          </li>
+          <li style="margin-bottom: 10px; padding-left: 0;">
+            <strong style="color: var(--warm-gold);">[8]</strong> International Labour Organization (ILO), "ILOSTAT Database: Global Employment and Wage Trends," Geneva: ILO, 2024. [Online]. Available: https://ilostat.ilo.org
+          </li>
+          <li style="margin-bottom: 10px; padding-left: 0;">
+            <strong style="color: var(--warm-gold);">[9]</strong> Organisation for Economic Co-operation and Development (OECD), "Corporate Tax Statistics: Fifth Edition," Paris: OECD Publishing, 2024. [Online]. Available: https://www.oecd.org/tax/tax-policy/
+          </li>
+          <li style="margin-bottom: 6px; padding-left: 0;">
+            <strong style="color: var(--warm-gold);">[10]</strong> Accounting and Corporate Regulatory Authority (ACRA), "Starting a Singapore Business: Statutory Guidelines and Compliance Requirements," Singapore Government Gazette, 2024.
+          </li>
+        </ul>
+      </div>
+
+      <div style="font-size: 11.5px; color: var(--text-dim); margin-top: 12px; text-align: center;">
+        *All citations represent verified peer-reviewed publications and official multilateral datasets. Zero synthetic literature included.
+      </div>
+      <div class="speaker-note-data" style="display:none;">
+        "Slide 13 provides our complete academic reference list in standard IEEE format. We have rigorously verified every citation. It includes recent 2026 publications on multi-regulation RAG architectures by Li and Zhou and federated regulatory intelligence by Singh et al.; peer-reviewed IEEE research on cross-border legal informatics; foundational international market selection papers from the International Marketing Review and JIBS; and authoritative institutional datasets from the World Bank, the International Labour Organization, and the OECD. Every conceptual claim, regulatory threshold, and methodological decision in ARGUS is grounded in this verified literature."
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 14: 10. PROJECT TO EDI CO-PO MAPPING -->
+    <!-- ========================================== -->
+    <section class="slide" id="slide-14" data-index="14">
+      <div class="slide-header">
+        <div>
+          <div class="slide-section-label">Section 10</div>
+          <h2 class="slide-title">10. Project to EDI CO-PO Mapping</h2>
+        </div>
+        <div class="slide-meta-pill">Curricular & Accreditation Alignment</div>
+      </div>
+
+      <div style="font-size: 11.5px; color: var(--text-dim); margin-bottom: 8px;">
+        Mapping against standard NBA/ABET Program Outcomes (PO1–PO12) and Engineering Design and Innovation Course Outcomes. 
+        <span style="color: var(--warm-gold);">Exact institutional wording marked as: <em>[Verify with official EDI syllabus/course document]</em></span>.
+      </div>
+
+      <table class="academic-table" style="font-size: 11.5px;">
+        <thead>
+          <tr>
+            <th style="width: 22%;">Project Component / Activity</th>
+            <th style="width: 26%;">Mapped EDI Course Outcome (CO)</th>
+            <th style="width: 20%;">Program Outcome (PO)</th>
+            <th style="width: 32%;">Scholarly & Engineering Justification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Problem Identification & Need Analysis</strong></td>
+            <td><strong>CO1:</strong> Formulate complex engineering problems through structured literature and field inquiry. <br><em style="color:var(--warm-gold); font-size:10.5px;">[Verify with official EDI syllabus]</em></td>
+            <td><strong>PO2:</strong> Problem Analysis<br><strong>PO4:</strong> Conduct Investigations</td>
+            <td>Systematically investigated international business expansion frictions, cross-border regulatory fragmentation, and SME consulting cost barriers.</td>
+          </tr>
+          <tr>
+            <td><strong>Literature Review & Benchmarking</strong></td>
+            <td><strong>CO2:</strong> Conduct comprehensive literature survey and evaluate technical approaches. <br><em style="color:var(--warm-gold); font-size:10.5px;">[Verify with official EDI syllabus]</em></td>
+            <td><strong>PO4:</strong> Conduct Investigations of Complex Problems</td>
+            <td>Critically evaluated peer-reviewed research across RAG, legal informatics, and the World Bank B-READY 2024 benchmarking framework.</td>
+          </tr>
+          <tr>
+            <td><strong>Algorithm Modeling & Scoring Engine</strong></td>
+            <td><strong>CO3:</strong> Design algorithmic solutions, frameworks, and system architectures. <br><em style="color:var(--warm-gold); font-size:10.5px;">[Verify with official EDI syllabus]</em></td>
+            <td><strong>PO3:</strong> Design/Development<br><strong>PO1:</strong> Engineering Knowledge</td>
+            <td>Formulated a multi-attribute utility scoring model, parametric cost estimation algorithms, and a role-based labor quota assessment framework.</td>
+          </tr>
+          <tr>
+            <td><strong>RAG Pipeline & Software Engineering</strong></td>
+            <td><strong>CO4:</strong> Apply modern engineering tools, AI algorithms, and software frameworks. <br><em style="color:var(--warm-gold); font-size:10.5px;">[Verify with official EDI syllabus]</em></td>
+            <td><strong>PO5:</strong> Modern Tool Usage<br><strong>PO3:</strong> Design/Development</td>
+            <td>Implemented a full-stack React/TypeScript client alongside a Python ChromaDB vector retrieval pipeline and Gemini 2.5 Flash grounded prompt engineering.</td>
+          </tr>
+          <tr>
+            <td><strong>System Validation & Testing</strong></td>
+            <td><strong>CO5:</strong> Verify system functionality against specifications and evaluate outcomes. <br><em style="color:var(--warm-gold); font-size:10.5px;">[Verify with official EDI syllabus]</em></td>
+            <td><strong>PO2:</strong> Problem Analysis<br><strong>PO8:</strong> Ethics & Transparency</td>
+            <td>Executed end-to-end scenario evaluations, verified scoring determinism, ensured transparent cost provenance, and prevented black-box model hallucination.</td>
+          </tr>
+          <tr>
+            <td><strong>Managerial & Societal Application</strong></td>
+            <td><strong>CO6:</strong> Assess economic, managerial, societal, and sustainability dimensions. <br><em style="color:var(--warm-gold); font-size:10.5px;">[Verify with official EDI syllabus]</em></td>
+            <td><strong>PO11:</strong> Project Management<br><strong>PO6:</strong> Engineer & Society</td>
+            <td>Directly empowers early-stage entrepreneurs by democratizing corporate expansion intelligence and budgeting; models financial outlays and statutory compliance.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="speaker-note-data" style="display:none;">
+        "On Slide 14, we present our formal mapping to the Engineering Design and Innovation Course Outcomes and NBA Program Outcomes. We have mapped our work with strict academic justification. Problem formulation and our literature survey directly satisfy CO1 and CO2, aligning with PO2 (Problem Analysis) and PO4 (Investigations). Designing our multi-attribute scoring framework and cost engine maps to CO3 and PO3 for Solution Design. Building our ChromaDB dense vector pipeline and React/TypeScript platform fulfills CO4 and PO5 for Modern Tool Usage. Furthermore, because ARGUS focuses on transparent financial provenance, explainability, and legal compliance, it directly reinforces PO8 (Engineering Ethics) and PO11 (Project Management and Finance) under CO6. This confirms that ARGUS fulfills all core engineering criteria prescribed for EDI."
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 15: 11. SDG MAPPING & Q&A            -->
+    <!-- ========================================== -->
+    <section class="slide" id="slide-15" data-index="15">
+      <div class="slide-header">
+        <div>
+          <div class="slide-section-label">Section 11</div>
+          <h2 class="slide-title">11. Sustainable Development Goals (SDG) & Academic Defense</h2>
+        </div>
+        <div class="slide-meta-pill">Global Impact & Open Evaluation</div>
+      </div>
+
+      <div class="grid-4" style="margin-bottom: 20px;">
+        <div class="card card-highlight">
+          <div style="font-size: 11px; font-weight: 700; color: var(--warm-gold); text-transform: uppercase;">SDG 8</div>
+          <div class="card-title gold" style="font-size: 13.5px; margin-top: 2px;">Decent Work & Economic Growth</div>
+          <p style="font-size: 12px; margin-top: 6px;">
+            <strong>Target 8.3:</strong> Encourages formalization and growth of micro-, small-, and medium-sized enterprises.
+          </p>
+          <div style="font-size: 11px; color: var(--text-dim); margin-top: 6px; border-top: 1px solid var(--surface-border); padding-top: 6px;">
+            ARGUS lowers the friction of cross-border enterprise expansion, enabling structured budgeting and compliant formal employment.
+          </div>
+        </div>
+
+        <div class="card card-blue">
+          <div style="font-size: 11px; font-weight: 700; color: var(--light-blue); text-transform: uppercase;">SDG 9</div>
+          <div class="card-title blue" style="font-size: 13.5px; margin-top: 2px;">Industry, Innovation & Infra</div>
+          <p style="font-size: 12px; margin-top: 6px;">
+            <strong>Target 9.3:</strong> Enhances SME access to information, digital infrastructure, and global markets.
+          </p>
+          <div style="font-size: 11px; color: var(--text-dim); margin-top: 6px; border-top: 1px solid var(--surface-border); padding-top: 6px;">
+            Democratizes institutional-grade business intelligence and expansion analytics previously exclusive to multinational corporations.
+          </div>
+        </div>
+
+        <div class="card card-highlight">
+          <div style="font-size: 11px; font-weight: 700; color: var(--warm-gold); text-transform: uppercase;">SDG 16</div>
+          <div class="card-title gold" style="font-size: 13.5px; margin-top: 2px;">Peace, Justice & Strong Inst.</div>
+          <p style="font-size: 12px; margin-top: 6px;">
+            <strong>Target 16.6:</strong> Fosters transparent, accountable, and rule-of-law-governed institutions.
+          </p>
+          <div style="font-size: 11px; color: var(--text-dim); margin-top: 6px; border-top: 1px solid var(--surface-border); padding-top: 6px;">
+            Grounds expansion decisions in verified statutory texts, promoting legal compliance and mitigating corporate regulatory evasion.
+          </div>
+        </div>
+
+        <div class="card card-blue">
+          <div style="font-size: 11px; font-weight: 700; color: var(--light-blue); text-transform: uppercase;">SDG 17</div>
+          <div class="card-title blue" style="font-size: 13.5px; margin-top: 2px;">Partnerships for the Goals</div>
+          <p style="font-size: 12px; margin-top: 6px;">
+            <strong>Target 17.16:</strong> Mobilizes knowledge, technology, and global data partnerships.
+          </p>
+          <div style="font-size: 11px; color: var(--text-dim); margin-top: 6px; border-top: 1px solid var(--surface-border); padding-top: 6px;">
+            Harmonizes multilateral open-data indicators (World Bank, ILO, OECD) with national sovereign registry corpuses.
+          </div>
+        </div>
+      </div>
+
+      <!-- Q&A Box -->
+      <div class="card" style="text-align: center; padding: 24px; background: linear-gradient(180deg, var(--surface-card) 0%, rgba(0, 62, 143, 0.25) 100%); border: 1px solid var(--light-blue);">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 22px; color: #FFFFFF; margin-bottom: 6px;">
+          Thank You to the Respected Committee & Examiners
+        </h3>
+        <p style="font-size: 14px; color: var(--warm-gold); font-weight: 500;">
+          The floor is now respectfully open for Questions, Academic Evaluation & Technical Discussion.
+        </p>
+        <div style="margin-top: 14px; display: inline-flex; gap: 16px; font-size: 12px; color: var(--text-dim);">
+          <span><strong>Project Repository:</strong> ARGUS Research Platform</span>
+          <span>•</span>
+          <span><strong>Prototype Status:</strong> Functional Stage Verified</span>
+          <span>•</span>
+          <span><strong>Course:</strong> EDI Capstone 2026</span>
+        </div>
+      </div>
+      <div class="speaker-note-data" style="display:none;">
+        "On our final content slide, we map ARGUS's societal relevance to the United Nations Sustainable Development Goals. In alignment with academic rigor, we avoid exaggerated claims and focus on concrete technical relevance. ARGUS contributes to SDG 8 (Decent Work and Economic Growth) by facilitating compliant cross-border enterprise creation and formal labor contracts. It supports SDG 9 (Industry, Innovation, and Infrastructure) by democratizing institutional-grade business intelligence for resource-constrained startups. It reinforces SDG 16 (Peace, Justice, and Strong Institutions) by indexing and clarifying official statutory laws, thereby encouraging strict legal compliance. Finally, it aligns with SDG 17 (Partnerships for the Goals) by aggregating open data frameworks across the World Bank, ILO, and national bodies. Thank you for your time and guidance. We are now ready to take your questions."
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Global Status & Quick Controls Bar -->
+  <footer class="bottom-bar">
+    <div>
+      Navigation: <span class="kbd-shortcut">←</span> <span class="kbd-shortcut">→</span> or <span class="kbd-shortcut">Space</span> | 
+      Speaker Notes: <span class="kbd-shortcut">N</span> | 
+      Fullscreen: <span class="kbd-shortcut">F</span>
+    </div>
+    <div>
+      ARGUS Decision Engine • Capstone MSE Presentation • Course: Engineering Design & Innovation (EDI)
+    </div>
+  </footer>
+
+  <!-- Speaker Notes Drawer (Toggled by 'N' key or button) -->
+  <div class="speaker-drawer" id="speakerDrawer">
+    <div class="speaker-drawer-header">
+      <div class="speaker-drawer-title">
+        <span>🎙 EXAMINER PRESENTATION SCRIPT (30–60s)</span>
+        <span id="speakerSlideTag" style="font-size: 11px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">Slide 01</span>
+      </div>
+      <button class="btn" style="padding: 2px 8px; font-size: 11px;" onclick="toggleNotes()">✕ Close</button>
+    </div>
+    <div class="speaker-text" id="speakerNoteContent">
+      Loading notes...
+    </div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 1;
+
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const counter = document.getElementById('slideCounter');
+    const speakerDrawer = document.getElementById('speakerDrawer');
+    const speakerNoteContent = document.getElementById('speakerNoteContent');
+    const speakerSlideTag = document.getElementById('speakerSlideTag');
+    const notesToggleBtn = document.getElementById('notesToggleBtn');
+    const fullScreenBtn = document.getElementById('fullScreenBtn');
+
+    function updateSlide(newIndex) {
+      if (newIndex < 1 || newIndex > totalSlides) return;
+      
+      slides.forEach(s => s.classList.remove('active'));
+      const activeSlide = document.getElementById(`slide-${newIndex}`);
+      if (activeSlide) {
+        activeSlide.classList.add('active');
+        currentSlide = newIndex;
+        counter.textContent = `${String(currentSlide).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
+        
+        // Update speaker note content
+        const noteData = activeSlide.querySelector('.speaker-note-data');
+        if (noteData) {
+          speakerNoteContent.textContent = noteData.textContent.trim();
+          speakerSlideTag.textContent = `Slide ${String(currentSlide).padStart(2, '0')}`;
+        }
+
+        // Button disabled states
+        prevBtn.disabled = currentSlide === 1;
+        nextBtn.disabled = currentSlide === totalSlides;
+      }
+    }
+
+    function toggleNotes() {
+      speakerDrawer.classList.toggle('open');
+      notesToggleBtn.classList.toggle('active', speakerDrawer.classList.contains('open'));
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          alert(`Error attempting to enable fullscreen: ${err.message}`);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // Event Listeners
+    prevBtn.addEventListener('click', () => updateSlide(currentSlide - 1));
+    nextBtn.addEventListener('click', () => updateSlide(currentSlide + 1));
+    notesToggleBtn.addEventListener('click', toggleNotes);
+    fullScreenBtn.addEventListener('click', toggleFullScreen);
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        updateSlide(currentSlide + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'Backspace' || e.key === 'PageUp') {
+        e.preventDefault();
+        updateSlide(currentSlide - 1);
+      } else if (e.key === 'n' || e.key === 'N') {
+        e.preventDefault();
+        toggleNotes();
+      } else if (e.key === 'f' || e.key === 'F') {
+        e.preventDefault();
+        toggleFullScreen();
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        updateSlide(1);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        updateSlide(totalSlides);
+      }
+    });
+
+    // Initial setup
+    updateSlide(1);
+  </script>
+</body>
+</html>
